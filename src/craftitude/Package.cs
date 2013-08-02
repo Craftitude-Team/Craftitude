@@ -12,6 +12,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using YamlDotNet;
+using YamlDotNet.RepresentationModel;
+using YamlDotNet.RepresentationModel.Serialization;
 
 namespace Craftitude
 {
@@ -23,8 +26,31 @@ namespace Craftitude
         {
             _directoryInfo = packageDirectory;
 
-            // load metadata
-            Metadata = JsonConvert.DeserializeObject<PackageMetadata>(File.ReadAllText(_directoryInfo.GetFile("metadata.json").FullName));
+            FileInfo jsonFile = _directoryInfo.GetFile("metadata.json");
+            FileInfo yamlFile = _directoryInfo.GetFile("metadata.yml");
+            
+            if (jsonFile.Exists)
+            {
+                Serializer se = new Serializer();
+                Metadata = JsonConvert.DeserializeObject<PackageMetadata>(File.ReadAllText(_directoryInfo.GetFile("metadata.json").FullName));
+                using (var yamlStream = yamlFile.Open(FileMode.OpenOrCreate))
+                {
+                    using (var yamlWriter = new StreamWriter(yamlStream, Encoding.UTF8))
+                    {
+                        se.Serialize(yamlWriter, Metadata);
+                    }
+                }
+                jsonFile.Delete();
+            }
+
+            Deserializer dse = new Deserializer();
+            using (var yamlStream = yamlFile.Open(FileMode.Open))
+            {
+                using (var yamlReader = new StreamReader(yamlStream, Encoding.UTF8, true))
+                {
+                    Metadata = dse.Deserialize<PackageMetadata>(yamlReader);
+                }
+            }
         }
 
         public string Path { get { return _directoryInfo.ToString(); } }
@@ -91,6 +117,7 @@ namespace Craftitude
         public PackageLicense License { get; set; }
 
         [JsonProperty("ad-url")]
+        [YamlAlias("Ad-Url")]
         public string AdUrl { get; set; }
 
         [JsonProperty("maintainers")]
@@ -132,12 +159,12 @@ namespace Craftitude
     [Serializable]
     public class Dependency
     {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public DependencyType Type { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
 
         [JsonProperty("versions")]
         public string Versions { get; set; }
@@ -165,6 +192,7 @@ namespace Craftitude
         public string Text { get; set; }
 
         [JsonProperty("text-url")]
+        [YamlAlias("Text-Url")]
         public string TextUrl { get; set; }
     }
 
@@ -178,6 +206,7 @@ namespace Craftitude
         public string Realname { get; set; }
 
         [JsonProperty("email")]
+        [YamlAlias("E-Mail")]
         public string Email { get; set; }
 
         [JsonProperty("url")]

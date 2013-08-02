@@ -7,3 +7,6 @@
 [submodule "externals/sharpcompress"]
 	path = externals/sharpcompress
 	url = https://github.com/adamhathcock/sharpcompress.git
+[submodule "externals/YamlDotNet"]
+	path = externals/YamlDotNet
+	url = https://github.com/aaubry/YamlDotNet.git

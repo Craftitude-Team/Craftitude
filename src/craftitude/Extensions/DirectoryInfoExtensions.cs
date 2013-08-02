@@ -19,7 +19,13 @@ namespace System
             }
             public static FileInfo GetFile(this DirectoryInfo directoryInfo, string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
             {
-                return directoryInfo.GetFiles(searchPattern, searchOption).First();
+                var f = directoryInfo.GetFiles(searchPattern, searchOption);
+                if (f.Any())
+                    return f.First();
+                else if (!searchPattern.Contains('?') && !searchPattern.Contains('*'))
+                    return new FileInfo(Path.Combine(directoryInfo.FullName + Path.DirectorySeparatorChar, searchPattern));
+                else
+                    return null;
             }
         }
     }

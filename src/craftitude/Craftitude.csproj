@@ -74,6 +74,14 @@
       <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
       <Name>Newtonsoft.Json.Net40</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\externals\YamlDotNet\YamlDotNet.Core\YamlDotNet.Core.csproj">
+      <Project>{bf32de1b-6276-4341-b212-f8862adbba7a}</Project>
+      <Name>YamlDotNet.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\externals\YamlDotNet\YamlDotNet.RepresentationModel\YamlDotNet.RepresentationModel.csproj">
+      <Project>{21ca0077-e15c-446d-9c43-f6d3f9d09687}</Project>
+      <Name>YamlDotNet.RepresentationModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\plugins\compression\compression.csproj">
       <Project>{30a68a8c-76bd-4917-8982-d827422b0c82}</Project>
       <Name>compression</Name>
