@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Craftitude.Plugins.Configuration</RootNamespace>
-    <AssemblyName>Craftitude.Plugins.Configuration</AssemblyName>
+    <AssemblyName>plugin_configuration</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
