@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
+using System.IO;
 using System.Text;
 using NLua;
 using NLua.Config;
@@ -11,7 +13,8 @@ using NLua.Method;
 
 namespace Craftitude.Plugins.LuaSetup
 {
-    public class LuaSetup : InstallationStep
+    [Export("luasetup", typeof(SetupHelper))]
+    public class LuaSetup : SetupHelper
     {
         public override void Run(string[] arguments)
         {
@@ -19,35 +22,30 @@ namespace Craftitude.Plugins.LuaSetup
             {
                 lua.LoadCLRPackage();
                 lua.RegisterFunction("GetProfile", this, this.GetType().GetMethod("GetProfile"));
-                lua.RegisterFunction("GetProfilePath", this, this.GetType().GetMethod("GetProfilePath"));
                 lua.RegisterFunction("GetPackage", this, this.GetType().GetMethod("GetPackage"));
-                lua.RegisterFunction("GetPackagePath", this, this.GetType().GetMethod("GetPackagePath"));
+                lua.DoFile(Path.Combine(Package.Path + Path.DirectorySeparatorChar, arguments[0].Replace('/', Path.DirectorySeparatorChar)));
+                lua.GetFunction(arguments[1]).Call();
             }
         }
 
-        private Profile GetProfile()
+        public Profile GetProfile()
         {
             return Profile;
         }
 
-        private string GetProfilePath()
+        public string GetProfilePath()
         {
             return Profile.Path;
         }
 
-        private Package GetPackage()
+        public Package GetPackage()
         {
             return Package;
         }
 
-        private string GetPackagePath()
+        public string GetPackagePath()
         {
             return Package.Path;
-        }
-
-        public static bool Test()
-        {
-            return true;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Craftitude
 {
-    public class InstallationStep
+    public class SetupHelper
     {
         public virtual void Run(string[] arguments) { }
 

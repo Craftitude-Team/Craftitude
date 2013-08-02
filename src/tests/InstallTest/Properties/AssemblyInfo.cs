@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("Test003-AppDomainScripting")]
+[assembly: AssemblyTitle("InstallTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Test003-AppDomainScripting")]
+[assembly: AssemblyProduct("InstallTest")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("25ebcbe7-3076-403d-8ce1-1e676ac645f0")]
+[assembly: Guid("6237fc98-95e6-450e-b364-61a2ddebdcb9")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //

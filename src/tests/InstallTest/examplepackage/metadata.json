@@ -1,0 +1,98 @@
+{
+	"id": "presencefootsteps-forge",
+	"name": "Presence Footsteps for Forge",
+	"description": "Presence Footsteps adds new sound effects when Minecraft didn't play any sound at all, such as jumping, landing, walking on the edge of a block, foot shuffling when coming to a stop.\r\n\r\nIt also plays sounds differently whenever you're running, and allows each block to be played in a different way: Metal fences does not sound like iron blocks; Walking over rails both plays a faint metallic sound and the surface below it; Walking on a piston pointing upwards sounds like wood.\r\n\r\nThis package is compatible with Minecraft Forge instead of ModLoader.",
+	"version": "r0",
+	"revision": 0,
+	"subscriptions": [
+		"universal"
+	],
+	"ad-url": "http://adf.ly/SOdmd",
+	"license": {
+		"name": "WTFPLv2",
+		"url": "http://www.wtfpl.net/",
+		"text-url": "http://www.wtfpl.net/txt/copying"
+	},
+	"maintainers": [
+		{
+			"username": "Icedream",
+			"email": "icedream@modernminas.de"
+		}
+	],
+	"developers": [
+		{
+			"username": "Hurricaaane",
+			"url": "http://www.minecraftforum.net/user/491646-hurricaaane/"
+		}
+	],
+	"platforms": [
+		"windows-x86",
+		"windows-x64",
+		"linux-x86",
+		"linux-x64",
+		"macosx-x86",
+		"macosx-x64"
+	],
+	"dependencies": [
+		{
+			"type": "prerequirement",
+			"name": "craftitude-plugin-archive"
+		},
+		{
+			"type": "prerequirement",
+			"name": "craftitude-plugin-io"
+		},
+		{
+			"type": "prerequirement",
+			"name": "craftitude-plugin-setup-lua"
+		},
+		{
+			"type": "requirement",
+			"name": "minecraftforge"
+		},
+		{
+			"type": "incompatibility",
+			"name": "presencefootsteps-modloader"
+		},
+		{
+			"type": "requirement",
+			"name": "minecraft",
+			"versions": "#^1.6.2*$"
+		},
+		{
+			"type": "suggestion",
+			"name": "presencefootsteps-defaultpack",
+			"versions": "=r0"
+		}
+	],
+	"targets": {
+		"install": [
+			{
+				"name": "plugin:luasetup",
+				"arguments": [ "setup/setup.lua", "install" ]
+			}
+		],
+		"uninstall": [
+			{
+				"name": "plugin:luasetup",
+				"arguments": [ "setup/setup.lua", "uninstall" ]
+			}
+		],
+		"configure": [
+			{
+				"name": "plugin:luasetup",
+				"arguments": [ "setup/setup.lua", "configure" ]
+			}
+		],
+		"purge": [
+			{
+				"name": "plugin:luasetup",
+				"arguments": [ "setup/setup.lua", "purge" ]
+			}
+		],
+		"update": [
+			{ "name": "target:uninstall" },
+			{ "name": "target:install" }
+		],
+	}
+}

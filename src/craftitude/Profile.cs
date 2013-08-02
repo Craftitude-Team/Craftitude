@@ -24,6 +24,8 @@ namespace Craftitude
 
         public ProfileInfo ProfileInfo { get; private set; }
 
+        public DirectoryInfo Directory { get { return _directory; } }
+
         public string Path { get { return _directory.ToString(); } }
     }
 
