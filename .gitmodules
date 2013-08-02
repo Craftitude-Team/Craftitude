@@ -1,3 +1,9 @@
 [submodule "externals/NLua"]
 	path = externals/NLua
 	url = https://github.com/NLua/NLua.git
+[submodule "externals/Newtonsoft.Json"]
+	path = externals/Newtonsoft.Json
+	url = https://github.com/JamesNK/Newtonsoft.Json.git
+[submodule "externals/sharpcompress"]
+	path = externals/sharpcompress
+	url = https://github.com/adamhathcock/sharpcompress.git

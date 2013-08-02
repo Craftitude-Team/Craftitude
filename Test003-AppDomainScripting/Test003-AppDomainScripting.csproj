@@ -71,11 +71,6 @@
       <Project>{cc8c4d79-ef30-4b03-b991-de8396dfbd60}</Project>
       <Name>Craftitude</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\NLua\Core\KeraLua\external\lua\win32\liblua.vcxproj">
-      <Project>{828df940-c68c-4e53-8022-6502a4a0701f}</Project>
-      <Name>liblua</Name>
-	  <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\externals\NLua\Core\NLua\NLua.csproj">
       <Project>{f55cabbb-4108-4a39-94e1-581fd46dc021}</Project>
       <Name>NLua</Name>
