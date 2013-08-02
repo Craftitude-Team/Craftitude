@@ -1,4 +1,4 @@
-@echo on
+@echo off
 set solutiondir=%cd%
 
 set platform="%~1"
