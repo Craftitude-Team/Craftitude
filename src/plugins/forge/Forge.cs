@@ -49,7 +49,7 @@ namespace Craftitude.Plugins.Forge
 
         public static string GenerateModPath(Profile profile, PackageMetadata metadata)
         {
-            return Path.Combine(profile.Directory.CreateSubdirectory("mods").FullName + Path.DirectorySeparatorChar, CoerceValidFileName((metadata.Name + "-" + metadata.Version + ".jar").Replace(" ", "")));
+            return Path.Combine(profile.Directory.CreateSubdirectory("mods").FullName + Path.DirectorySeparatorChar, CoerceValidFileName((metadata.Id + "-" + metadata.Version + ".jar").Replace(" ", "")));
 
         }
     }
