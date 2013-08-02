@@ -44,5 +44,10 @@ namespace Craftitude.Plugins.LuaSetup
         {
             return Package.Path;
         }
+
+        public static bool Test()
+        {
+            return true;
+        }
     }
 }
