@@ -111,3 +111,6 @@ UpgradeLog*.XML
 
 # Packages from NuGet
 /packages/
+
+# Ignore externals
+/externals/
