@@ -111,3 +111,6 @@ UpgradeLog*.XML
 
 # Packages from NuGet
 /packages/
+
+# lua win32 folder created by cmake
+/externals/NLua/Core/KeraLua/external/lua/win32/
