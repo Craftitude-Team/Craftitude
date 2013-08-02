@@ -74,21 +74,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-cd $(SolutionDir)
-cd externals
-cd NLua
-cd Core
-cd KeraLua
-cd external
-cd lua
-mkdir win32
-cd win32
-cmake ..
-cmake --build . --config "$(ConfigurationName)"
-copy /y "bin\*.pdb" "$(TargetDir)"
-copy /y "bin\*.dll" "$(TargetDir)"
-</PreBuildEvent>
+    <PreBuildEvent>cd $(SolutionDir)
+call build-lua</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
