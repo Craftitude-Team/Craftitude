@@ -27,7 +27,7 @@ pushd lua
 
 echo ** Compiling Lua DLL for "%configuration_clr:"=%|%platform_clr:"=%"
 cmake ../../externals/NLua/Core/KeraLua/external/lua
-cmake --build . --config %configuration% -- /projectconfig "%configuration_clr:"=%|%platform_clr:"=%"
+cmake --build . --config %configuration% -- /nologo /projectconfig "%configuration_clr:"=%|%platform_clr:"=%"
 echo ** Copying Lua DLL to %target:"=%...
 copy /y "bin\lua*.dll" %target%
 
