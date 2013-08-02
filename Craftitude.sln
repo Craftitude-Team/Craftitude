@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json.Net40", "ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpCompress", "externals\sharpcompress.patch\SharpCompress\SharpCompress.csproj", "{10A689CF-76A2-4A4F-96E4-553C33398438}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E0750E9C-76B7-4D45-BF9C-C1C6535852F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDomainScripting", "src\tests\AppDomainScripting\AppDomainScripting.csproj", "{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,22 @@ Global
 		{10A689CF-76A2-4A4F-96E4-553C33398438}.ReleaseKopiLua|Any CPU.ActiveCfg = Release|Any CPU
 		{10A689CF-76A2-4A4F-96E4-553C33398438}.ReleaseKopiLua|Any CPU.Build.0 = Release|Any CPU
 		{10A689CF-76A2-4A4F-96E4-553C33398438}.ReleaseKopiLua|x64.ActiveCfg = Release|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Debug|x64.ActiveCfg = Debug|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Debug|x64.Build.0 = Debug|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.DebugKopiLua|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.DebugKopiLua|Any CPU.Build.0 = Debug|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.DebugKopiLua|x64.ActiveCfg = Debug|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.DebugKopiLua|x64.Build.0 = Debug|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Release|x64.ActiveCfg = Release|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.Release|x64.Build.0 = Release|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.ReleaseKopiLua|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.ReleaseKopiLua|Any CPU.Build.0 = Release|Any CPU
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.ReleaseKopiLua|x64.ActiveCfg = Release|x64
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF}.ReleaseKopiLua|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,5 +154,6 @@ Global
 		{F55CABBB-4108-4A39-94E1-581FD46DC021} = {DB25B4B7-A203-41A7-9DC5-5C4ECEEAFBAE}
 		{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D} = {DB25B4B7-A203-41A7-9DC5-5C4ECEEAFBAE}
 		{10A689CF-76A2-4A4F-96E4-553C33398438} = {DB25B4B7-A203-41A7-9DC5-5C4ECEEAFBAE}
+		{CEE40E26-03BF-4CBA-91CB-E6A953CA58DF} = {E0750E9C-76B7-4D45-BF9C-C1C6535852F9}
 	EndGlobalSection
 EndGlobal
