@@ -15,11 +15,27 @@ namespace Craftitude.Plugins.Configuration
             p.Save(file);
         }
 
+        public void Default(string file, string key, string value)
+        {
+            var p = new PropertiesFile(file);
+            if (p.Get(key) == null)
+            {
+                p.Set(key, value);
+                p.Save(file);
+            }
+        }
+
         public void Unset(string file, string key)
         {
             var p = new PropertiesFile(file);
             p.Unset(key);
             p.Save(file);
+        }
+
+        public string Get(string file, string key)
+        {
+            var p = new PropertiesFile(file);
+            return p.Get(key);
         }
     }
 
@@ -113,6 +129,14 @@ namespace Craftitude.Plugins.Configuration
 
                 Set(k, v);
             }
+        }
+
+        public string Get(string k)
+        {
+            if (Properties.ContainsKey(k))
+                return Properties[k];
+            else
+                return null;
         }
 
         public void Set(string k, string v)

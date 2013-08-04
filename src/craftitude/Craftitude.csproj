@@ -63,6 +63,14 @@
     <Compile Include="Extensions\DirectoryInfoExtensions.cs" />
     <Compile Include="Extensions\FileInfoExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
+    <Compile Include="GuidUtility.cs" />
+    <Compile Include="Plugins\AmazonS3.cs" />
+    <Compile Include="Plugins\Compression.cs" />
+    <Compile Include="Plugins\FileUtils.cs" />
+    <Compile Include="Plugins\Http.cs" />
+    <Compile Include="Plugins\Java.cs" />
+    <Compile Include="Plugins\Libraries.cs" />
+    <Compile Include="Plugins\Maven2.cs" />
     <Compile Include="SetupHelper.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="PathEntry.cs" />
@@ -73,6 +81,10 @@
     <ProjectReference Include="..\..\externals\Newtonsoft.Json\Src\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
       <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
       <Name>Newtonsoft.Json.Net40</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\externals\sharpcompress.patch\SharpCompress\SharpCompress.csproj">
+      <Project>{10a689cf-76a2-4a4f-96e4-553c33398438}</Project>
+      <Name>SharpCompress</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\externals\YamlDotNet\YamlDotNet.Core\YamlDotNet.Core.csproj">
       <Project>{bf32de1b-6276-4341-b212-f8862adbba7a}</Project>

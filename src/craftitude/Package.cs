@@ -8,6 +8,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.IO;
+using SharpCompress;
+using SharpCompress.Archive;
+using SharpCompress.Archive.SevenZip;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
@@ -15,6 +18,10 @@ using Newtonsoft.Json.Serialization;
 using YamlDotNet;
 using YamlDotNet.RepresentationModel;
 using YamlDotNet.RepresentationModel.Serialization;
+using YamlDotNet.Core;
+using YamlDotNet.RepresentationModel.Serialization.NamingConventions;
+using YamlDotNet.RepresentationModel.Serialization.NodeDeserializers;
+using YamlDotNet.RepresentationModel.Serialization.NodeTypeResolvers;
 
 namespace Craftitude
 {
@@ -44,6 +51,7 @@ namespace Craftitude
             }
 
             Deserializer dse = new Deserializer();
+            //Console.WriteLine("Reading YAML: {0}", yamlFile.FullName);
             using (var yamlStream = yamlFile.Open(FileMode.Open))
             {
                 using (var yamlReader = new StreamReader(yamlStream, Encoding.UTF8, true))
@@ -101,18 +109,57 @@ namespace Craftitude
         }
     }
 
+    public class PackedPackage
+    {
+        RemotePackage _package;
+        public RemotePackage Package { get { return _package; } }
+
+        public PackedPackage(FileInfo fileInfo)
+        {
+            // Generate temporary directory
+            var tempDir = new DirectoryInfo(Path.GetTempPath()).CreateSubdirectory(Path.GetRandomFileName());
+
+            // Extract the package
+            if (!SevenZipArchive.IsSevenZipFile(fileInfo))
+                throw new InvalidDataException("Not a valid 7-Zip archive. All Craftitude packages need to be packed in the 7-Zip format.");
+            using (var szarch = SevenZipArchive.Open(fileInfo))
+            {
+                szarch.WriteToDirectory(tempDir.FullName);                
+            }
+
+            // Create package instance of the freshly unpacked stuff
+            Package package = new Package(tempDir);
+            _package = RemotePackage.FromLocalPackage(package);
+        }
+
+        public PackedPackage(string filePath)
+            : this(new FileInfo(filePath))
+        {
+        }
+
+        ~PackedPackage()
+        {
+            // Clean up directory.
+            // TODO: Make this safe so it ultimately gets called when the package isn't needed anymore.
+            _package.Package.Directory.Delete(true);
+        }
+    }
+
     [Serializable]
     public class PackageMetadata
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
-        
+
         [JsonProperty("license")]
         public PackageLicense License { get; set; }
 
@@ -126,22 +173,22 @@ namespace Craftitude
         [JsonProperty("developers")]
         public IEnumerable<Person> Developers { get; set; }
 
-        [JsonProperty("subscriptions")]
+        [JsonProperty("subscriptions", Required = Required.Always)]
         public IEnumerable<string> Subscriptions { get; set; }
 
-        [JsonProperty("platforms")]
+        [JsonProperty("platforms", Required = Required.Always)]
         public IEnumerable<string> Platforms { get; set; }
 
-        [JsonProperty("version")]
+        [JsonProperty("version", Required = Required.Always)]
         public string Version { get; set; }
 
-        [JsonProperty("revision")]
-        public ulong Revision { get; set; }
+        [JsonProperty("date", Required = Required.Always)]
+        public DateTime Date { get; set; }
 
-        [JsonProperty("dependencies")]
+        [JsonProperty("dependencies", Required = Required.AllowNull)]
         public IEnumerable<Dependency> Dependencies { get; set; }
 
-        [JsonProperty("targets")]
+        [JsonProperty("targets", Required = Required.Always)]
         public Dictionary<string, IEnumerable<SetupStep>> Targets { get; set; }
 
     }
@@ -149,7 +196,7 @@ namespace Craftitude
     [Serializable]
     public class SetupStep
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 
         [JsonProperty("arguments")]
@@ -159,10 +206,10 @@ namespace Craftitude
     [Serializable]
     public class Dependency
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Required.Always)]
         [JsonConverter(typeof(StringEnumConverter))]
         public DependencyType Type { get; set; }
 
@@ -185,7 +232,7 @@ namespace Craftitude
         [JsonProperty("url")]
         public string Url { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
         
         [JsonProperty("text")]
@@ -199,7 +246,7 @@ namespace Craftitude
     [Serializable]
     public class Person
     {
-        [JsonProperty("username")]
+        [JsonProperty("username", Required = Required.Always)]
         public string Username { get; set; }
 
         [JsonProperty("realname")]

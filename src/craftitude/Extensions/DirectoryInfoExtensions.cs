@@ -27,6 +27,32 @@ namespace System
                 else
                     return null;
             }
+            public static void Copy(this DirectoryInfo dir, DirectoryInfo destinationDir, bool overwrite = true, bool copySubDirs = true)
+            {
+                if (!dir.Exists)
+                {
+                    throw new DirectoryNotFoundException(
+                        "Source directory does not exist or could not be found."
+                        );
+                }
+
+                // If the destination directory doesn't exist, create it. 
+                if (!destinationDir.Exists)
+                    destinationDir.Create();
+
+                // Get the files in the directory and copy them to the new location.
+                foreach (FileInfo file in dir.EnumerateFiles())
+                {
+                    var targetpath = destinationDir.GetFile(file.Name).FullName;
+                    if (overwrite || !File.Exists(targetpath))
+                        file.CopyTo(targetpath, true);
+                }
+
+                // If copying subdirectories, copy them and their contents to new location. 
+                if (copySubDirs)
+                    foreach (var subdir in dir.EnumerateDirectories())
+                        subdir.Copy(destinationDir.CreateSubdirectory(subdir.Name));
+            }
         }
     }
 }
