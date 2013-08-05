@@ -114,3 +114,6 @@ UpgradeLog*
 
 # Ignore CMake lua files
 /externals/lua/
+
+# MSys stackdump on crashes
+/us.stackdump
