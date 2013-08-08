@@ -1,0 +1,55 @@
+﻿Id: presencefootsteps-defaultpack
+Name: Presence Footsteps Default Pack
+Description: >-
+  Default pack with the standard sounds for Presence Footsteps.
+License:
+  Url: http://www.wtfpl.net/
+  Name: WTFPLv2
+  Text-Url: http://www.wtfpl.net/txt/copying
+#Ad-Url: http://adf.ly/SOdmd
+Date: 2013-08-03T13:24:11+02:00
+Maintainers:
+- Username: Icedream
+  E-Mail: icedream@modernminas.de
+Developers:
+- Username: Hurricaaane
+  Url: http://www.minecraftforum.net/user/491646-hurricaaane/
+Subscriptions:
+- universal
+Platforms:
+- windows-x86
+- windows-x64
+- linux-x86
+- linux-x64
+- macosx-x86
+- macosx-x64
+Version: r0
+Dependencies:
+- Type: Prerequirement
+  Name: craftitude-plugin-configuration
+- Type: Requirement
+  Name: presencefootsteps-modloader|presencefootsteps-forge
+Targets:
+  install:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - install
+  uninstall:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - uninstall
+  configure:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - configure
+  purge:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - purge
+  update:
+  - Name: target:uninstall
+  - Name: target:install

@@ -1,0 +1,38 @@
+﻿Id: craftitude-plugin-configuration
+Name: Configuration plugin for Craftitude setups
+Description: >-
+  Craftitude setup plugin for Forge mod management.
+License:
+  Url: http://www.gnu.org/licenses/gpl.html
+  Name: GPLv3
+  Text-Url: http://www.gnu.org/licenses/gpl-3.0.txt
+Date: 2013-08-03T13:24:11+02:00
+Maintainers:
+- Username: Icedream
+  E-Mail: icedream@modernminas.de
+Developers:
+- Username: Icedream
+  E-Mail: icedream@modernminas.de
+Subscriptions:
+- universal
+Platforms:
+- windows-x86
+- windows-x64
+Version: 0.1a
+Dependencies: []
+Targets:
+  install:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - install
+  uninstall:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - uninstall
+  configure: []
+  purge: []
+  update:
+  - Name: target:uninstall
+  - Name: target:install

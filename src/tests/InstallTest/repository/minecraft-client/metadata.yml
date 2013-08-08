@@ -1,0 +1,84 @@
+Id: minecraft-client
+Name: Minecraft Client
+Description: >-
+  The vanilla Minecraft game client.
+License:
+  Url: http://mojang.com/terms
+  Name: Mojang Terms & Conditions
+Maintainers:
+- Username: Icedream
+  E-Mail: icedream@modernminas.de
+Date: 2013-08-03T13:24:11+02:00
+Developers:
+- Username: Mojang AB
+  Url: http://mojang.com/
+Subscriptions:
+- client
+Platforms:
+- windows-x86
+- windows-x64
+- linux-x86
+- linux-x64
+- macosx-x86
+- macosx-x64
+Version: 1.6.2
+Dependencies:
+- Type: Requirement
+  Name: minecraft-assets
+  Versions: =1.6.2
+- Type: Requirement
+  Name: jopt-simple
+- Type: Requirement
+  Name: paulscode-soundsystem
+- Type: Requirement
+  Name: paulscode-soundsystem-codec-jorbis
+- Type: Requirement
+  Name: paulscode-soundsystem-codec-wav
+- Type: Requirement
+  Name: paulscode-soundsystem-library-javasound
+- Type: Requirement
+  Name: paulscode-soundsystem-library-lwjglopenal
+- Type: Requirement
+  Name: argo
+- Type: Requirement
+  Name: bcprov
+- Type: Requirement
+  Name: guava
+- Type: Requirement
+  Name: commons-lang3
+- Type: Requirement
+  Name: commons-io
+- Type: Requirement
+  Name: jinput
+- Type: Requirement
+  Name: jutils
+- Type: Requirement
+  Name: gson
+- Type: Requirement
+  Name: lwjgl
+- Type: Requirement
+  Name: lwjgl_util
+Targets:
+  install:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - install
+  uninstall:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - uninstall
+  configure:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - configure
+  purge:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - purge
+  update:
+  - Name: target:uninstall
+  - Name: target:install

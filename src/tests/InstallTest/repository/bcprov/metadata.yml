@@ -1,0 +1,32 @@
+Id: bcprov
+Name: BouncyCastle Provider
+Maintainers:
+- Username: Icedream
+  E-Mail: icedream@modernminas.de
+Subscriptions:
+- universal
+Platforms:
+- windows-x86
+- windows-x64
+- linux-x86
+- linux-x64
+- macosx-x86
+- macosx-x64
+Version: 1.47
+Dependencies: []
+Targets:
+  install:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - install
+  uninstall:
+  - Name: plugin:luasetup
+    Arguments:
+    - setup/setup.lua
+    - uninstall
+  configure: []
+  purge: []
+  update:
+  - Name: target:uninstall
+  - Name: target:install
