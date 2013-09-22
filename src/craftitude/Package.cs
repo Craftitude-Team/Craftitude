@@ -180,12 +180,12 @@ namespace Craftitude
         public IEnumerable<string> Platforms { get; set; }
 
         [JsonProperty("version", Required = Required.Always)]
-        public string Version { get; set; }
+        public PackageVersion Version { get; set; }
 
         [JsonProperty("date", Required = Required.Always)]
         public DateTime Date { get; set; }
 
-        [JsonProperty("dependencies", Required = Required.AllowNull)]
+        [JsonProperty("dependencies", Required = Required.Always)]
         public IEnumerable<Dependency> Dependencies { get; set; }
 
         [JsonProperty("targets", Required = Required.Always)]
@@ -223,7 +223,8 @@ namespace Craftitude
         Suggestion = 1,
         Prerequirement = 2,
         Requirement = 4,
-        Incompatibility = 8
+        Incompatibility = 8,
+        Inclusion = 16
     }
 
     [Serializable]

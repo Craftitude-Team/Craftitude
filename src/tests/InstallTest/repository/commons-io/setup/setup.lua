@@ -6,7 +6,7 @@ local metadata = package.Metadata
 
 local group = "commons-io"
 local artifact = "commons-io"
-local version = metadata.Version
+local version = metadata.Version:ToString(false)
 
 function install()
 	Maven2.Install(profile, group, artifact, version)

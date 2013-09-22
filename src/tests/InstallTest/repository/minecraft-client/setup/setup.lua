@@ -2,7 +2,6 @@ import("System")
 import("System.IO")
 import("Craftitude.Plugins")
 
-local directorySeperator = string.char(Path.DirectorySeparatorChar) -- Path.DirectorySeparatorChar is a .NET "char" type value, which gets converted to an integer in Lua
 local profile = GetProfile()
 local profileDir = GetProfilePath()
 local package = GetPackage()
@@ -10,9 +9,9 @@ local packageDir = GetPackagePath()
 local metadata = package.Metadata
 
 function install()
-	local minecraftJar = Http.Download("https://s3.amazonaws.com/Minecraft.Download/versions/" .. metadata.Version .."/" .. metadata.Version .. ".jar")
-	Java.Install(profile, minecraftJar.FullPath, "net.minecraft.client", "minecraft", metadata.Version)
-	Java.Autoload(profile, "net.minecraft.client", "minecraft", metadata.Version)
+	local minecraftJar = Http.Download("https://s3.amazonaws.com/Minecraft.Download/versions/" .. metadata.Version:ToString(false) .."/" .. metadata.Version:ToString(false) .. ".jar")
+	Java.Install(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false), minecraftJar)
+	Java.Autoload(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false))
 	if profile.ProfileInfo.MainClass == nil or profile.ProfileInfo.MainClass == "" then
 		profile.ProfileInfo.MainClass = "net.minecraft.client.Minecraft"
 	end
@@ -23,8 +22,8 @@ function configure()
 end
 
 function uninstall()
-	Java.UnAutoload(profile, "net.minecraft.client", "minecraft", metadata.Version)
-	Java.Uninstall(profile, "net.minecraft.client", "minecraft", metadata.Version)
+	Java.UnAutoload(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false))
+	Java.Uninstall(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false))
 end
 
 function purge()

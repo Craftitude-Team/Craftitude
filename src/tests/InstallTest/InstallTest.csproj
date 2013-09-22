@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,7 +52,1588 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="repository\**\*">
+    <None Include="repository\argo\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\argo\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\bcprov\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\bcprov\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\commons-io\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\commons-io\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\commons-lang3\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\commons-lang3\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\craftitude-plugin-configuration\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\craftitude-plugin-configuration\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\craftitude-plugin-forge\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\craftitude-plugin-forge\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\craftitude-plugin-setup-lua\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\craftitude-plugin-setup-lua\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\gson\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\gson\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\guava\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\guava\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jinput-platform\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jinput-platform\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jinput\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jinput\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jopt-simple\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jopt-simple\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jutils\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\jutils\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\3rdparty\jinput_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\3rdparty\jogl_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\3rdparty\lzma_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\3rdparty\openal_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\CREDITS">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\doc\README">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\jar\lwjgl.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\linux\libjinput-linux.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\linux\libjinput-linux64.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\linux\liblwjgl.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\linux\liblwjgl64.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\linux\libopenal.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\linux\libopenal64.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\macosx\libjinput-osx.jnilib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\macosx\liblwjgl.jnilib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\macosx\openal.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\jinput-dx8.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\jinput-dx8_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\jinput-raw.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\jinput-raw_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\lwjgl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\lwjgl64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\OpenAL32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\data\native\windows\OpenAL64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\3rdparty\jinput_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\3rdparty\jogl_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\3rdparty\lzma_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\3rdparty\openal_license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\CREDITS">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\doc\README">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\data\jar\lwjgl_util.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\lwjgl_util\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraft-assets\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraft-assets\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraft-client\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraft-client\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraft-launchwrapper\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraft-launchwrapper\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraftforge\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\minecraftforge\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-codec-jorbis\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-codec-jorbis\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-codec-wav\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-codec-wav\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-library-javasound\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-library-javasound\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-library-lwjglopenal\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem-library-lwjglopenal\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\paulscode-soundsystem\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\acoustics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\bluntwood\bluntwood_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\brush\brush_through9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\concrete\concrete_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\deckwood\deckwood_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_land1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_land2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_land3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_land4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\dirt\dirt_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\glass\glass_hard1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\glass\glass_hit1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\glass\glass_hit2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\grass\grass_wander6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_land1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_land2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\gravel\gravel_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\leaves\leaves_through7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\lino\lino_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\marble\marble_wander7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_land1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbar\metalbar_wander6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\metalbox\metalbox_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\mud\mud_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\muffledice\muffledice_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\quicksand\quicksand_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\rug\rug_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\sand\sand_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\snow\snow_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\squeakywood\squeakywood_wander7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_run9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\stone\stone_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_through9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water\water_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_through9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_wander1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_wander2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_wander3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_wander4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\water_stereofix\water_wander5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\weakice\weakice_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk1.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk10.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk11.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk2.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk3.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk4.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk5.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk6.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk7.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk8.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\assets\minecraft\sound\pf_presence\wood\wood_walk9.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\blockmap.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\pack.mcmeta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\pf_pack.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\data\variator.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-defaultpack\setup\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-forge\data\presencefootsteps.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-forge\metadata.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="repository\presencefootsteps-forge\setup\setup.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

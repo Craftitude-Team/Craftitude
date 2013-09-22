@@ -30,16 +30,38 @@ namespace Craftitude.Plugins
                 }
             }
 
-            Console.WriteLine("Loading S3 bucket...");
-            XDocument doc = XDocument.Load(url);
+            XDocument doc = null;
+            XNamespace xmlns = "http://s3.amazonaws.com/doc/2006-03-01/";
+            Console.Write("Loading S3 bucket... ");
+            while (true)
+            {
+                try
+                {
+                    XmlDocument xdoc = new XmlDocument();
+                    xdoc.Load(url);
+                    var xnr = new XmlNodeReader(xdoc);
+                    xnr.MoveToContent();
+                    doc = XDocument.Load(xnr);
+                    Console.WriteLine("found {0} items", doc.Descendants(xmlns + "Contents").Count());
+                    if (!doc.Descendants(xmlns + "Contents").Any())
+                    {
+                        continue;
+                    }
+                    break;
+                }
+                catch
+                {
+                    continue;
+                }
+            }
 
-            foreach (var content in doc.Descendants("Contents"))
+            foreach (var content in doc.Descendants(xmlns + "Contents"))
             {
                 // Key as relative path
-                string relpath = content.Element("Key").Value;
+                string relpath = content.Element(xmlns + "Key").Value;
 
                 // Compare etags
-                string etag = content.Element("ETag").Value.Trim('"');
+                string etag = content.Element(xmlns + "ETag").Value.Trim('"');
                 if (!etags.ContainsKey(relpath))
                     etags.Add(relpath, null);
                 if (etags[relpath] == etag)
@@ -57,6 +79,8 @@ namespace Craftitude.Plugins
                     FileInfo fi = new FileInfo(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rellpath));
                     if (!fi.Directory.Exists)
                         fi.Directory.Create();
+                    else if (fi.Exists)
+                        fi.Delete();
 
                     UriBuilder b = new UriBuilder(url);
                     b.Path = b.Path.TrimEnd('/') + "/" + relpath;

@@ -6,7 +6,7 @@ local metadata = package.Metadata
 
 local group = "net.java.jutils"
 local artifact = "jutils"
-local version = metadata.Version
+local version = metadata.Version:ToString(false)
 
 function install()
 	Maven2.Install(profile, group, artifact, version)

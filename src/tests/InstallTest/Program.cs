@@ -42,6 +42,7 @@ namespace InstallTest
                         {
                             if (!profile.IsInstalledPackagesMatch(dependency))
                             {
+                                // TODO: abort on planned-to-install and actually wanted version mismatch
                                 if (packages.Sum(ps => ps.Count(pr => pr.Metadata.Id == dependency.Name)) > 0)
                                 {
                                     Console.WriteLine("{0}: {1} is already planned to be installed. Ignoring.", package.Metadata.Id, dependency.Name);
@@ -65,13 +66,16 @@ namespace InstallTest
 
         static void Main(string[] args)
         {
+            //if (Directory.Exists("test"))
+            //    Directory.Delete("test", true);
+
             Console.WriteLine("Creating test target...");
             var targetDirectory = Directory.CreateDirectory("test");
 
             Console.WriteLine("Preparing installation...");
             List<List<Package>> packages = GetPackagesToInstall("minecraft-client");
 
-            try
+            //try
             {
                 int phase = 0;
                 foreach (var packageBatch in packages)
@@ -85,10 +89,10 @@ namespace InstallTest
                     profile.RunTasks();
                 }
             }
-            catch (InvalidOperationException error)
+            //catch (InvalidOperationException error)
             {
-                Console.WriteLine("Setup error:");
-                Console.WriteLine(error.ToString());
+            //    Console.WriteLine("Setup error:");
+            //    Console.WriteLine(error.ToString());
             }
 
             profile.Save();

@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 using Newtonsoft.Json.Converters;
@@ -91,7 +92,7 @@ namespace Craftitude
 
         public IEnumerable<RemotePackage> InstalledPackagesMatch(Dependency dependency)
         {
-            Console.WriteLine("Installed packages match test: {0} {1}", dependency.Name, dependency.Versions);
+            Debug.WriteLine("Installed packages match test: {0} {1}", dependency.Name, dependency.Versions);
             return MatchPackages(ProfileInfo.InstalledPackages, dependency);
         }
 
@@ -169,12 +170,25 @@ namespace Craftitude
 
         private IEnumerable<RemotePackage> MatchPackages(IEnumerable<RemotePackage> packages, Dependency dependency)
         {
+
+            Debug.WriteLine("** MatchPackages(<{0} items>, {1})", packages.Count(), dependency.Name + " " + dependency.Versions);
+
             // Filter out by ID
             packages = packages.Where(p => dependency.Name.Split('|').Contains(p.Metadata.Id)).AsEnumerable();
-            var remotePackages = new List<RemotePackage>();
-            foreach(string depName in dependency.Name.Split('|'))
+            /*var remotePackages = new List<RemotePackage>();
+
+            foreach (string depName in dependency.Name.Split('|'))
+            {
+                Debug.WriteLine("remotePackages.AddRange(GetPackageMetadata(\"" + depName + "\"));");
+                Debug.WriteLine("// adding " + GetPackageMetadata(depName).Count() + " packages to list");
                 remotePackages.AddRange(GetPackageMetadata(depName)); //.GroupBy(rp => { var b = new UriBuilder(rp.Repository.Uri); b.Path = b.Path.TrimEnd('/') + rp.Repository.Subscription; return b.Uri; });
-            remotePackages = remotePackages.Distinct().ToList();
+            }
+            remotePackages = remotePackages.Distinct().ToList();*/
+            Debug.WriteLine("\tFiltered out by ID:", packages.Count());
+            foreach (var package in packages)
+            {
+                Debug.WriteLine("\t\t- package {0} {1}", package.Metadata.Id, package.Metadata.Version);
+            }
 
             // Filter out by version
             var selectedPackages = new List<RemotePackage>();
@@ -183,10 +197,10 @@ namespace Craftitude
                 dependency.Versions = "#^.*$";
             if (dependency.Versions.Trim().Any())
             {
-                List<char> versionToken = new List<char>();
-
                 foreach(string version in dependency.Versions.Split(' '))
                 {
+                    List<char> versionToken = new List<char>();
+
                     Queue<char> q = new Queue<char>(version.ToCharArray());
                     while (tokens.Contains(q.Peek()))
                     {
@@ -194,21 +208,19 @@ namespace Craftitude
                     }
 
                     string versionString = new string(q.ToArray());
-                    Console.WriteLine("> " + versionString);
 
                     foreach (var token in versionToken)
                     {
                         switch (token)
                         {
-                            case '>':
+                            case '=':
                                 try
                                 {
-                                    selectedPackages.AddRange(
+                                    var packagesFound =
                                         packages.Where(
-                                            p => p.Metadata.Date > remotePackages
-                                                //.Where(rp => rp.Repository.Equals(p.Repository))
-                                                .Single(rp => rp.Metadata.Version.Equals(versionString))
-                                                .Metadata.Date));
+                                            p => p.Metadata.Version.Equals(versionString));
+                                    Debug.WriteLine("\tComparison token {0}, version {2}: Found {1} packages", token, packagesFound.Count(), versionString);
+                                    selectedPackages.AddRange(packagesFound);
                                 }
                                 catch
                                 {
@@ -218,27 +230,27 @@ namespace Craftitude
                             case '<':
                                 try
                                 {
-                                    selectedPackages.AddRange(
+                                    var packagesFound =
                                         packages.Where(
-                                            p => p.Metadata.Date < remotePackages
-                                                //.Where(rp => rp.Repository.Equals(p.Repository))
-                                                .Single(rp => rp.Metadata.Version.Equals(versionString))
-                                                .Metadata.Date));
+                                            p => p.Metadata.Version.CompareTo(versionString) == -1
+                                            );
+                                    Debug.WriteLine("\tComparison token {0}, version {2}: Found {1} packages", token, packagesFound.Count(), versionString);
+                                    selectedPackages.AddRange(packagesFound);
                                 }
                                 catch
                                 {
                                     // TODO: Handle missing packages on all repositories.
                                 }
                                 break;
-                            case '=':
+                            case '>':
                                 try
                                 {
-                                    selectedPackages.AddRange(
+                                    var packagesFound =
                                         packages.Where(
-                                            p => p.Metadata.Date == remotePackages
-                                                //.Where(rp => rp.Repository.Equals(p.Repository))
-                                                .Single(rp => rp.Metadata.Version.Equals(versionString))
-                                                .Metadata.Date));
+                                            p => p.Metadata.Version.CompareTo(versionString) == 1
+                                            );
+                                    Debug.WriteLine("\tComparison token {0}, version {2}: Found {1} packages", token, packagesFound.Count(), versionString);
+                                    selectedPackages.AddRange(packagesFound);
                                 }
                                 catch
                                 {
@@ -247,18 +259,31 @@ namespace Craftitude
                                 break;
                             case '#':
                                 if (versionToken.Count > 1)
+                                {
+                                    Debug.WriteLine("Can't combine regex with other comparison types.");
                                     throw new InvalidOperationException("Can't combine regex with other comparison types.");
-                                
-                                selectedPackages.AddRange(
-                                    packages.Where(
-                                        p => Regex.IsMatch(p.Metadata.Version, versionString)));
+                                }
+
+                                try
+                                {
+                                    var packagesFound =
+                                        packages.Where(
+                                            p => Regex.IsMatch(p.Metadata.Version, versionString)
+                                        );
+                                    Debug.WriteLine("\tComparison token {0}: Found {1} packages", token, packagesFound.Count());
+                                    selectedPackages.AddRange(packagesFound);
+                                }
+                                catch
+                                {
+                                    Debug.WriteLine("\tComparison token {0}: Exception", token, null);
+                                }
                                 break;
                         }
                     }
                 }
             }
             
-            return remotePackages;
+            return selectedPackages;
         }
 
         private bool IsInstalled(RemotePackage package)
@@ -297,13 +322,13 @@ namespace Craftitude
                                     }
                                     break;
                                 case DependencyType.Requirement:
-                                    if (!IsInstalledPackagesMatch(dep) && !MatchPackages(_pendingPackages.Select(t => t.Item2), dep).Any())
+                                    if (!IsInstalledPackagesMatch(dep) && !MatchPackages(pending.Select(t => t.Item2), dep).Any())
                                     {
                                         throw new InvalidOperationException(string.Format("Package {0} needs dependency {1} (versions {2}) to be installed with it. Append the dependency before installing this package.", item.Item2.Metadata.Id, dep.Name, dep.Versions));
                                     }
                                     break;
                                 case DependencyType.Incompatibility:
-                                    if (IsInstalledPackagesMatch(dep) && MatchPackages(_pendingPackages.Select(t => t.Item2), dep).Any())
+                                    if (IsInstalledPackagesMatch(dep) && MatchPackages(pending.Select(t => t.Item2), dep).Any())
                                     {
                                         throw new InvalidOperationException(string.Format("Package {0} is incompatible with {1} (versions {2}). Remove the incompatible package before installing this package.", item.Item2.Metadata.Id, dep.Name, dep.Versions));
                                     }
@@ -502,14 +527,16 @@ namespace Craftitude
         static Repository()
         {
             // Dirty, but okay. Nevermind. -_-
-            Local = new Repository()
-            {
-                Uri = new Uri("file:///X:/"),
-                Subscription = "*"
-            };
         }
 
-        public static Repository Local { get; private set; }
+        public static Repository GetLocalRepositories(Package package, DirectoryInfo directory)
+        {
+            UriBuilder b = new UriBuilder();
+            b.Scheme = "file";
+            b.Path = directory.FullName;
+            //return new Repository() { Uri = b.Uri, Subscription = package.Metadata.Subscriptions };
+            return null;
+        }
 
         public Uri Uri { get; set; }
 
@@ -522,7 +549,7 @@ namespace Craftitude
         {
             return new RemotePackage()
             {
-                Repository = Repository.Local,
+                Repository = null,
                 Package = package,
                 Metadata = package.Metadata
             };

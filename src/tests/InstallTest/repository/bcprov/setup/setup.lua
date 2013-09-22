@@ -5,11 +5,11 @@ local package = GetPackage()
 local metadata = package.Metadata
 
 local group = "org.bouncycastle"
-local artifact = "bcprov-jdk15"
-local version = metadata.Version
+local artifact = "bcprov-jdk15on"
+local version = metadata.Version:ToString(false)
 
 function install()
-	Maven2.Install(profile, group, artifact, version, "https://s3.amazonaws.com/Minecraft.Download/libraries/")
+	Maven2.Install(profile, group, artifact, version)
 	Java.Autoload(profile, group, artifact, version)
 end
 

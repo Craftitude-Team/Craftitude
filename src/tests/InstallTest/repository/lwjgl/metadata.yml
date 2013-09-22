@@ -13,14 +13,8 @@ Platforms:
 - linux-x64
 - macosx-x86
 - macosx-x64
-Version: 2.9.1-nightly-86
-Dependencies:
-- Type: Requirement
-  Name: lwjgl-platform
-  Versions: =2.9.1-nightly-86
-- Type: Suggestion
-  Name: lwjgl_util
-  Versions: =2.9.1-nightly-86
+Version: 2.9.1-git-dist-88
+Dependencies: []
 Targets:
   install:
   - Name: plugin:luasetup

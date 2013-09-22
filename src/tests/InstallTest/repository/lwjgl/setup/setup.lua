@@ -1,4 +1,5 @@
 import("Craftitude.Plugins")
+import("System.IO")
 
 local profile = GetProfile()
 local package = GetPackage()
@@ -6,27 +7,30 @@ local packageDir = GetPackagePath()
 local metadata = package.Metadata
 
 local directorySeperator = string.char(Path.DirectorySeparatorChar) -- Path.DirectorySeparatorChar is a .NET "char" type value, which gets converted to an integer in Lua
+local platform = GetPlatformString()
 local group = "org.lwjgl.lwjgl"
-local artifact = "lwjgl"
-local version = metadata.Version
-local upversion = "2.9.1"
-local upbuild = "86"
-local sharedfolder = Path.Combine(package.Directory.Parent, "lwjgl_shared_"..upversion.."_"..upbuild)
+local artifact = metadata.Id
+local version = metadata.Version:ToString(false)
+local sharedfolder = DirectoryInfo(Path.Combine(packageDir, "data"))
+local binfolder = profile.Directory:CreateSubdirectory("binaries"):CreateSubdirectory("lwjgl")
 
 function install()
-	if not Directory.Exists(sharedfolder) then
-		local zip=Compression.OpenArchive(Http.Download("http://ci.newdawnsoftware.com/job/LWJGL-git-dist/"..upbuild.."/artifact/dist/lwjgl-"..upversion..".zip"))
-		Compress.UnpackAll(zip, sharedfolder)
-	end
-	
-	sharedfolder = DirectoryInfo(sharedfolder)
-	sharedfolder = sharedfolder.CreateSubdirectory("lwjgl-"..upversion)
-	
-	Java.Install(profile, group, artifact, version, Path.Combine(sharedfolder.FullName .. directorySeperator, "jar", "lwjgl.jar"))
+	-- java binaries
+	Java.Install(profile, group, artifact, version, Path.Combine(sharedfolder.FullName .. directorySeperator, "jar", artifact .. ".jar"))
 	Java.Autoload(profile, group, artifact, version)
+	
+	-- native binaries
+	nativefolder = sharedfolder:CreateSubdirectory("native")
+	platformfolder = nativefolder:CreateSubdirectory(platform)
+	FileUtils.CopyDirectory(platformfolder, binfolder)
+	Libraries.Autoload(profile, binfolder.FullName)
 end
 
 function uninstall()
+	-- java binaries
 	Java.UnAutoload(profile, group, artifact, version)
 	Java.Uninstall(profile, group, artifact, version)
+	
+	-- native binaries
+	Libraries.UnAutoload(profile, binfolder.FullName)
 end

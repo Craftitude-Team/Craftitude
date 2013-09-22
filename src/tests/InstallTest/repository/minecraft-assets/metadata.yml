@@ -1,8 +1,8 @@
-Id: minecraft-client
-Name: Minecraft Client
+Id: minecraft-assets
+Name: Minecraft Assets
 Date: 2013-08-03T13:24:11+02:00
 Description: >-
-  The vanilla Minecraft game client.
+  The vanilla Minecraft game client assets.
 License:
   Url: http://mojang.com/terms
   Name: Mojang Terms & Conditions

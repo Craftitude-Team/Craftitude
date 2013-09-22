@@ -6,7 +6,7 @@ local metadata = package.Metadata
 
 local group = "org.apache.commons"
 local artifact = "commons-lang3"
-local version = metadata.Version
+local version = metadata.Version:ToString(false)
 
 function install()
 	Maven2.Install(profile, group, artifact, version)

@@ -6,7 +6,7 @@ local metadata = package.Metadata
 
 local group = "net.sf.jopt-simple"
 local artifact = "jopt-simple"
-local version = metadata.Version
+local version = metadata.Version:ToString(false)
 
 function install()
 	Maven2.Install(profile, group, artifact, version)

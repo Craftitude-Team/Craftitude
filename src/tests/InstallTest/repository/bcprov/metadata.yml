@@ -12,7 +12,7 @@ Platforms:
 - linux-x64
 - macosx-x86
 - macosx-x64
-Version: 1.47
+Version: 1.49
 Dependencies: []
 Targets:
   install:

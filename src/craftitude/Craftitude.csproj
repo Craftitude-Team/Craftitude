@@ -76,6 +76,7 @@
     <Compile Include="PathEntry.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PackageVersion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\externals\Newtonsoft.Json\Src\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
