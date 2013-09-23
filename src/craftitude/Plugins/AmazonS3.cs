@@ -6,6 +6,8 @@ using System.Xml.Linq;
 using System.Text;
 using System.IO;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 
@@ -13,7 +15,7 @@ namespace Craftitude.Plugins
 {
     public static class AmazonS3
     {
-        public static void DownloadBucket(string url, string targetPath)
+        public static void DownloadBucket(string url, string targetPath, int parallelDownloads = 32)
         {
             Dictionary<string, string> etags = null;
 
@@ -55,6 +57,48 @@ namespace Craftitude.Plugins
                 }
             }
 
+            int actionsCompleted = 0;
+            List<Tuple<string, string>> actions = new List<Tuple<string, string>>();
+
+            Action<Tuple<string, string>> downloadingAction = (t) =>
+                    {
+                        var etag = t.Item1;
+                        var path = t.Item2;
+
+                        string rpath = path.Replace('/', Path.DirectorySeparatorChar);
+
+                        FileInfo fi = new FileInfo(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rpath));
+                        if (!fi.Directory.Exists)
+                            fi.Directory.Create();
+                        else if (fi.Exists)
+                            fi.Delete();
+
+                        UriBuilder b = new UriBuilder(url);
+                        b.Path = b.Path.TrimEnd('/') + "/" + path;
+
+                        while (true)
+                        {
+                            try
+                            {
+                                File.Move(Http.Download(b.Uri.ToString()), fi.FullName);
+                                //Console.WriteLine("Finished download: {0}", path);
+                                break;
+                            }
+                            catch
+                            {
+                                //Console.WriteLine("Redownloading (Exception): {0}", path);
+                                continue;
+                            }
+                        }
+
+                        lock (etags)
+                        {
+                            etags[path] = etag;
+                            actionsCompleted++;
+                            Console.Write("Downloading... ({0}/{1}, {0:P2}%)", actionsCompleted, actions.Count, Math.Round((float)actionsCompleted / actions.Count, 3));
+                        }
+                    };
+
             foreach (var content in doc.Descendants(xmlns + "Contents"))
             {
                 // Key as relative path
@@ -72,25 +116,23 @@ namespace Craftitude.Plugins
 
                 // Check if directory
                 if (relpath.EndsWith("/")) // is a directory
-                    Directory.CreateDirectory(rellpath);
+                    Directory.CreateDirectory(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rellpath));
                 else
                 {
-                    // Download file
-                    FileInfo fi = new FileInfo(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rellpath));
-                    if (!fi.Directory.Exists)
-                        fi.Directory.Create();
-                    else if (fi.Exists)
-                        fi.Delete();
-
-                    UriBuilder b = new UriBuilder(url);
-                    b.Path = b.Path.TrimEnd('/') + "/" + relpath;
-
-                    Console.WriteLine("Downloading from S3 bucket: {0}", relpath);
-                    File.Move(Http.Download(b.Uri.ToString()), fi.FullName);
-
-                    etags[relpath] = etag;
+                    actions.Add(new Tuple<string, string>(etag, relpath));
                 }
             }
+
+            Console.WriteLine("Starting download of {0} items.", actions.Count);
+            Parallel.ForEach(actions, new ParallelOptions {
+                MaxDegreeOfParallelism = 16
+            }, downloadingAction);
+
+            while (actionsCompleted < actions.Count)
+                Thread.Sleep(25);
+
+            Console.WriteLine("Download of {0} items from Amazon S3 bucket finished!", actions.Count);
+            actions.Clear();
 
             using (var s = di.GetFile("bucket.bson").Open(FileMode.OpenOrCreate))
             {
