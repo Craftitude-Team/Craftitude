@@ -312,7 +312,7 @@ namespace Craftitude
 
                         foreach (var dep in package.Metadata.Dependencies)
                         {
-                            Console.WriteLine("Analyzing {0}: {1}", dep.Type.ToString().ToLower(), dep.Name + " " + dep.Versions);
+                            Debug.WriteLine("Analyzing {0}: {1}", dep.Type.ToString().ToLower(), dep.Name + " " + dep.Versions);
                             switch (dep.Type)
                             {
                                 case DependencyType.Prerequirement:
