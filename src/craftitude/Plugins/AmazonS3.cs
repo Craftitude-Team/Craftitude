@@ -95,7 +95,7 @@ namespace Craftitude.Plugins
                         {
                             etags[path] = etag;
                             actionsCompleted++;
-                            Console.Write("Downloading... ({0}/{1}, {0:P2}%)", actionsCompleted, actions.Count, Math.Round((float)actionsCompleted / actions.Count, 3));
+                            Console.Write("Downloading... ({0}/{1}, {2}%)\r", actionsCompleted, actions.Count, Math.Round(100 * (float)actionsCompleted / actions.Count, 0));
                         }
                     };
 
