@@ -17,18 +17,16 @@ namespace Craftitude.Plugins
     {
         public static void DownloadBucket(string url, string targetPath, int parallelDownloads = 32)
         {
-            Dictionary<string, string> etags = null;
+            Dictionary<string, string> etags;
 
-            DirectoryInfo di = new DirectoryInfo(targetPath);
+            var di = new DirectoryInfo(targetPath);
 
             using (var s = di.GetFile("bucket.bson").Open(FileMode.OpenOrCreate))
             {
-                using (BsonReader br = new BsonReader(s))
+                using (var br = new BsonReader(s))
                 {
-                    JsonSerializer se = new JsonSerializer();
-                    etags = se.Deserialize<Dictionary<string, string>>(br);
-                    if (etags == null)
-                        etags = new Dictionary<string, string>();
+                    var se = new JsonSerializer();
+                    etags = se.Deserialize<Dictionary<string, string>>(br) ?? new Dictionary<string, string>();
                 }
             }
 
@@ -39,7 +37,7 @@ namespace Craftitude.Plugins
             {
                 try
                 {
-                    XmlDocument xdoc = new XmlDocument();
+                    var xdoc = new XmlDocument();
                     xdoc.Load(url);
                     var xnr = new XmlNodeReader(xdoc);
                     xnr.MoveToContent();
@@ -57,23 +55,23 @@ namespace Craftitude.Plugins
                 }
             }
 
-            int actionsCompleted = 0;
-            List<Tuple<string, string>> actions = new List<Tuple<string, string>>();
+            var actionsCompleted = 0;
+            var actions = new List<Tuple<string, string>>();
 
             Action<Tuple<string, string>> downloadingAction = (t) =>
                     {
                         var etag = t.Item1;
                         var path = t.Item2;
 
-                        string rpath = path.Replace('/', Path.DirectorySeparatorChar);
+                        var rpath = path.Replace('/', Path.DirectorySeparatorChar);
 
-                        FileInfo fi = new FileInfo(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rpath));
+                        var fi = new FileInfo(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rpath));
                         if (!fi.Directory.Exists)
                             fi.Directory.Create();
                         else if (fi.Exists)
                             fi.Delete();
 
-                        UriBuilder b = new UriBuilder(url);
+                        var b = new UriBuilder(url);
                         b.Path = b.Path.TrimEnd('/') + "/" + path;
 
                         while (true)
@@ -136,9 +134,9 @@ namespace Craftitude.Plugins
 
             using (var s = di.GetFile("bucket.bson").Open(FileMode.OpenOrCreate))
             {
-                using (BsonWriter bw = new BsonWriter(s))
+                using (var bw = new BsonWriter(s))
                 {
-                    JsonSerializer se = new JsonSerializer();
+                    var se = new JsonSerializer();
                     se.Serialize(bw, etags);
                 }
             }

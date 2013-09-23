@@ -60,10 +60,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependency.cs" />
+    <Compile Include="DependencyType.cs" />
     <Compile Include="Extensions\DirectoryInfoExtensions.cs" />
     <Compile Include="Extensions\FileInfoExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="GuidUtility.cs" />
+    <Compile Include="PackageAction.cs" />
+    <Compile Include="PackageLicense.cs" />
+    <Compile Include="PackageMetadata.cs" />
+    <Compile Include="PackagesListFile.cs" />
+    <Compile Include="PackedPackage.cs" />
+    <Compile Include="PathLibraryEntry.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Plugins\AmazonS3.cs" />
     <Compile Include="Plugins\Compression.cs" />
     <Compile Include="Plugins\FileUtils.cs" />
@@ -71,12 +80,17 @@
     <Compile Include="Plugins\Java.cs" />
     <Compile Include="Plugins\Libraries.cs" />
     <Compile Include="Plugins\Maven2.cs" />
+    <Compile Include="ProfileInfo.cs" />
+    <Compile Include="RemotePackage.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryConfiguration.cs" />
     <Compile Include="SetupHelper.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="PathEntry.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PackageVersion.cs" />
+    <Compile Include="SetupStep.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\externals\Newtonsoft.Json\Src\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
