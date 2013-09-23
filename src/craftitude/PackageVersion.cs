@@ -9,8 +9,8 @@ namespace Craftitude
     {
         static readonly char[] splitChars = new char[] { ':', '.', '-', '_', ' ', '~', '+' };
 
-        uint internalVersionBump = 0;
-        string versionString;
+        public uint InternalSuperversion { get; set; }
+        public string PublicVersion { get; set; }
 
         public static implicit operator PackageVersion(string version)
         {
@@ -18,19 +18,19 @@ namespace Craftitude
             if (s.Count() == 1)
                 return new PackageVersion()
                 {
-                    versionString = version
+                    PublicVersion = version
                 };
             else
                 return new PackageVersion()
                 {
-                    internalVersionBump = uint.Parse(s[0]),
-                    versionString = string.Join(":", s.Skip(1))
+                    InternalSuperversion = uint.Parse(s[0]),
+                    PublicVersion = string.Join(":", s.Skip(1))
                 };
         }
 
         public static implicit operator string(PackageVersion pv)
         {
-            return pv.internalVersionBump.ToString() + ":" + pv.versionString;
+            return pv.InternalSuperversion.ToString() + ":" + pv.PublicVersion;
         }
 
         public override string ToString()
@@ -40,7 +40,7 @@ namespace Craftitude
 
         public string ToString(bool withBumpPrefix)
         {
-            return (withBumpPrefix && internalVersionBump != 0 ? internalVersionBump.ToString() + ":" : "") + versionString;
+            return (withBumpPrefix && InternalSuperversion != 0 ? InternalSuperversion.ToString() + ":" : "") + PublicVersion;
         }
 
         public override bool Equals(object obj)
