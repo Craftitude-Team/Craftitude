@@ -1,33 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Utilities;
 
 namespace Craftitude
 {
     public class Profile
     {
-        DirectoryInfo _directory;
-        DirectoryInfo _craftitudeDirectory;
-        List<Tuple<PackageAction, RemotePackage>> _pendingPackages = new List<Tuple<PackageAction, RemotePackage>>();
+        readonly DirectoryInfo _craftitudeDirectory;
 
-        FileInfo _bsonFile;
+        readonly List<Tuple<PackageAction, RemotePackage>> _pendingPackages = new List<Tuple<PackageAction, RemotePackage>>();
+
+        readonly FileInfo _bsonFile;
 
         public Profile(DirectoryInfo profileDirectory)
         {
-            _directory = profileDirectory;
+            Directory = profileDirectory;
 
-            _craftitudeDirectory = _directory.CreateSubdirectory("craftitude");
+            _craftitudeDirectory = Directory.CreateSubdirectory("craftitude");
             _craftitudeDirectory.CreateSubdirectory("repositories"); // repository package lists
             _craftitudeDirectory.CreateSubdirectory("packages"); // cached package setups
 
@@ -62,7 +56,7 @@ namespace Craftitude
 
         public ProfileInfo ProfileInfo { get; private set; }
 
-        public DirectoryInfo Directory { get { return _directory; } }
+        public DirectoryInfo Directory { get; private set; }
 
         public void AppendPackage(Package package, PackageAction action)
         {
@@ -102,18 +96,7 @@ namespace Craftitude
 
         private IEnumerable<RemotePackage> GetDependingPackages(RemotePackage package)
         {
-            List<RemotePackage> packages = new List<RemotePackage>();
-            foreach (var installedPackage in ProfileInfo.InstalledPackages)
-            {
-                foreach (var dependency in installedPackage.Metadata.Dependencies.Where(d => d.Name.Split('|').Contains(installedPackage.Metadata.Id)))
-                {
-                    if (InstalledPackagesMatch(dependency).Contains(package))
-                    {
-                        packages.Add(installedPackage);
-                    }
-                }
-            }
-            return packages;
+            return (from installedPackage in ProfileInfo.InstalledPackages from dependency in installedPackage.Metadata.Dependencies.Where(d => d.Name.Split('|').Contains(installedPackage.Metadata.Id)) where InstalledPackagesMatch(dependency).Contains(package) select installedPackage).ToList();
         }
 
         private IEnumerable<RemotePackage> RemotePackagesMatch(Dependency dependency)
@@ -124,7 +107,7 @@ namespace Craftitude
 
         private Guid GetRepositoryGuid(Uri repositoryUrl, string subscription)
         {
-            UriBuilder b = new UriBuilder(repositoryUrl);
+            var b = new UriBuilder(repositoryUrl);
             b.Path = b.Path.TrimEnd('/') + "/" + subscription;
             return GuidUtility.Create(GuidUtility.UrlNamespace, b.Uri.ToString());
         }
@@ -135,7 +118,7 @@ namespace Craftitude
             {
                 using (var bsonReader = new BsonReader(stream))
                 {
-                    JsonSerializer s = new JsonSerializer();
+                    var s = new JsonSerializer();
                     return s.Deserialize<PackagesListFile>(bsonReader);
                 }
             }
@@ -149,11 +132,11 @@ namespace Craftitude
 
         private IEnumerable<RemotePackage> GetPackageMetadata(string id)
         {
-            List<RemotePackage> packages = new List<RemotePackage>();
+            var packages = new List<RemotePackage>();
 
-            foreach (RepositoryConfiguration repoconf in ProfileInfo.Repositories)
+            foreach (var repoconf in ProfileInfo.Repositories)
             {
-                foreach (string subscription in repoconf.Subscriptions)
+                foreach (var subscription in repoconf.Subscriptions)
                 {
                     packages.AddRange(
                         GetRepositoryCache(repoconf.Uri, subscription)
@@ -169,11 +152,11 @@ namespace Craftitude
 
         private IEnumerable<RemotePackage> MatchPackages(IEnumerable<RemotePackage> packages, Dependency dependency)
         {
-
-            Debug.WriteLine("** MatchPackages(<{0} items>, {1})", packages.Count(), dependency.Name + " " + dependency.Versions);
+            var remotePackages = packages as IList<RemotePackage> ?? packages.ToList();
+            Debug.WriteLine("** MatchPackages(<{0} items>, {1})", remotePackages.Count(), dependency.Name + " " + dependency.Versions);
 
             // Filter out by ID
-            packages = packages.Where(p => dependency.Name.Split('|').Contains(p.Metadata.Id)).AsEnumerable();
+            packages = remotePackages.Where(p => dependency.Name.Split('|').Contains(p.Metadata.Id)).AsEnumerable();
             /*var remotePackages = new List<RemotePackage>();
 
             foreach (string depName in dependency.Name.Split('|'))
