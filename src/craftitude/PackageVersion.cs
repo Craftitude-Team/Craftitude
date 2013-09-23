@@ -78,8 +78,8 @@ namespace Craftitude
             // Comparison
             foreach (var comparisonItem in
                 split1.Zip(split2, (s, i) => new { s, i })
-                .ToDictionary(item => item.s, item => item.i)
-                .Select(i => i.Key.CompareTo(i.Value)))
+                .Select(item => new[] { item.s, item.i })
+                .Select(i => i[0].CompareTo(i[1])))
             {
                 if (comparisonItem != 0)
                 {
