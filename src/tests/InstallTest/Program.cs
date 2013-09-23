@@ -75,7 +75,7 @@ namespace InstallTest
             Console.WriteLine("Preparing installation...");
             List<List<Package>> packages = GetPackagesToInstall("minecraft-client");
 
-            //try
+            try
             {
                 int phase = 0;
                 foreach (var packageBatch in packages)
@@ -83,19 +83,18 @@ namespace InstallTest
                     Console.WriteLine("Installation phase {0}", ++phase);
                     foreach (var package in packageBatch)
                     {
-                        Console.WriteLine("\tPackage {0} {1} will be installed now.", package.Metadata.Id, package.Metadata.Version);
                         profile.AppendPackage(package, PackageAction.Install);
                     }
                     profile.RunTasks();
                 }
-            }
-            //catch (InvalidOperationException error)
-            {
-            //    Console.WriteLine("Setup error:");
-            //    Console.WriteLine(error.ToString());
-            }
 
-            profile.Save();
+                profile.Save();
+            }
+            catch (InvalidOperationException error)
+            {
+                Console.WriteLine("Setup error:");
+                Console.WriteLine(error.ToString());
+            }
 
             Console.WriteLine("Done.");
 
