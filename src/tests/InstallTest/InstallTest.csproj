@@ -157,12 +157,6 @@
     <None Include="repository\lwjgl\data\jar\lwjgl.jar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="repository\lwjgl\data\native\linux\libjinput-linux.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="repository\lwjgl\data\native\linux\libjinput-linux64.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="repository\lwjgl\data\native\linux\liblwjgl.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -175,25 +169,10 @@
     <None Include="repository\lwjgl\data\native\linux\libopenal64.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="repository\lwjgl\data\native\macosx\libjinput-osx.jnilib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="repository\lwjgl\data\native\macosx\liblwjgl.jnilib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="repository\lwjgl\data\native\macosx\openal.dylib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="repository\lwjgl\data\native\windows\jinput-dx8.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="repository\lwjgl\data\native\windows\jinput-dx8_64.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="repository\lwjgl\data\native\windows\jinput-raw.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="repository\lwjgl\data\native\windows\jinput-raw_64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="repository\lwjgl\data\native\windows\lwjgl.dll">

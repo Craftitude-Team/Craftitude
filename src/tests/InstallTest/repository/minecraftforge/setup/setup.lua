@@ -11,15 +11,15 @@ local package = GetPackage()
 local packageDir = GetPackagePath()
 local metadata = package.Metadata
 
-local minecraftVersion = string.sub(metadata.Dependencies[0].Versions, 1)
-local forgeVersion = metadata.Version
+local minecraftVersion = string.sub(metadata.Dependencies[0].Versions, 2)
+local forgeVersion = metadata.Version:ToString(false)
 
 -- Installation routine.
 function install()
 	Java.Install(
 		profile,
-		Http.Download("http://files.minecraftforge.net/minecraftforge/minecraftforge-universal-" .. minecraftVersion .. "-" .. forgeVersion .. ".jar"),
-		"net.minecraftforge", "minecraftforge", forgeVersion
+		"net.minecraftforge", "minecraftforge", forgeVersion,
+		Http.Download("http://files.minecraftforge.net/minecraftforge/minecraftforge-universal-" .. minecraftVersion .. "-" .. forgeVersion .. ".jar")
 	)
 end
 

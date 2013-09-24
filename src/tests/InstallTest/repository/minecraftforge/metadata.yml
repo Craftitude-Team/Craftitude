@@ -24,7 +24,6 @@ Platforms:
 - macosx-x86
 - macosx-x64
 Version: 9.10.0.804
-Revision: 009010000804
 Dependencies:
 - Type: Requirement
   Name: minecraft-client
