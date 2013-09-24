@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.IO;
 using Craftitude;
 
@@ -9,53 +9,47 @@ namespace InstallTest
 {
     class Program
     {
-        static DirectoryInfo repository = new DirectoryInfo("repository");
-        static Profile profile = new Profile(new DirectoryInfo("test"));
+        static readonly DirectoryInfo Repository = new DirectoryInfo("repository");
+        static readonly Profile Profile = new Profile(new DirectoryInfo("test"));
 
         static Package GetPackage(string name)
         {
             Console.WriteLine("Fetching package {0}...", name);
-            return new Package(repository.EnumerateDirectories(name).Single());
+            return new Package(Repository.EnumerateDirectories(name).Single());
         }
 
-        static List<List<Package>> GetPackagesToInstall(string name)
+        static IEnumerable<List<Package>> GetPackagesToInstall(string name)
         {
-            List<List<Package>> packages = new List<List<Package>>();
+            var packages = new List<List<Package>> {new List<Package>()};
 
-            packages.Add(new List<Package>());
             packages[0].Add(GetPackage(name));
 
-            bool hasPredependencies = false;
+            bool hasPredependencies;
             do
             {
                 Console.WriteLine("Starting new list.");
 
-                List<Package> pendingPackages = new List<Package>();
+                var pendingPackages = new List<Package>();
                 var currentlist = packages.Last();
 
                 foreach (var package in currentlist)
                 {
                     Console.WriteLine("Checking out package {0}", package.Metadata.Id);
-                    foreach (var dependency in package.Metadata.Dependencies)
+                    foreach (var dependency in package.Metadata.Dependencies.Where(dependency => dependency.Type == DependencyType.Prerequirement || dependency.Type == DependencyType.Requirement || dependency.Type == DependencyType.Suggestion).Where(dependency => !Profile.IsInstalledPackagesMatch(dependency)))
                     {
-                        if (dependency.Type == DependencyType.Prerequirement || dependency.Type == DependencyType.Requirement || dependency.Type == DependencyType.Suggestion)
+                        // TODO: abort on planned-to-install and actually wanted version mismatch
+                        if (packages.Sum(ps => ps.Count(pr => pr.Metadata.Id == dependency.Name)) > 0)
                         {
-                            if (!profile.IsInstalledPackagesMatch(dependency))
-                            {
-                                // TODO: abort on planned-to-install and actually wanted version mismatch
-                                if (packages.Sum(ps => ps.Count(pr => pr.Metadata.Id == dependency.Name)) > 0)
-                                {
-                                    Console.WriteLine("{0}: {1} is already planned to be installed. Ignoring.", package.Metadata.Id, dependency.Name);
-                                    continue;
-                                }
-                                Console.WriteLine("{0}: {2} not installed but is a {1}, will be installed beforehand.", package.Metadata.Id, dependency.Type.ToString().ToLower(), dependency.Name); 
-                                pendingPackages.Add(GetPackage(dependency.Name));
-                            }
+                            Console.WriteLine("{0}: {1} is already planned to be installed. Ignoring.", package.Metadata.Id, dependency.Name);
+                            continue;
                         }
+                        Console.WriteLine("{0}: {2} not installed but is a {1}, will be installed beforehand.", package.Metadata.Id, dependency.Type.ToString().ToLower(), dependency.Name); 
+                        pendingPackages.Add(GetPackage(dependency.Name));
                     }
                 }
 
-                if (hasPredependencies = pendingPackages.Any())
+                hasPredependencies = pendingPackages.Any();
+                if (hasPredependencies)
                     packages.Add(pendingPackages);
             } while (hasPredependencies);
 
@@ -64,31 +58,40 @@ namespace InstallTest
             return packages;
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             //if (Directory.Exists("test"))
             //    Directory.Delete("test", true);
 
             Console.WriteLine("Creating test target...");
-            var targetDirectory = Directory.CreateDirectory("test");
+            Directory.CreateDirectory("test");
 
             Console.WriteLine("Preparing installation...");
-            List<List<Package>> packages = GetPackagesToInstall("minecraft-client");
+            var packages = GetPackagesToInstall("minecraftforge");
 
             try
             {
-                int phase = 0;
+                var phase = 0;
                 foreach (var packageBatch in packages)
                 {
-                    Console.WriteLine("Installation phase {0}", ++phase);
+                    Debug.WriteLine("Installation phase {0}", ++phase);
+                    
+                    // Install
                     foreach (var package in packageBatch)
                     {
-                        profile.AppendPackage(package, PackageAction.Install);
+                        Profile.AppendPackage(package, PackageAction.Install);
                     }
-                    profile.RunTasks();
+
+                    // Configure
+                    foreach (var package in packageBatch.Where(package => package.Metadata.Targets.ContainsKey("configure")))
+                    {
+                        Profile.AppendPackage(package, PackageAction.Configure);
+                    }
+
+                    Profile.RunTasks();
                 }
 
-                profile.Save();
+                Profile.Save();
             }
             catch (InvalidOperationException error)
             {

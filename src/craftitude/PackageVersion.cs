@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Craftitude
 {
     public class PackageVersion : IComparable<PackageVersion>
     {
-        static readonly char[] splitChars = new char[] { ':', '.', '-', '_', ' ', '~', '+' };
+        static readonly char[] SplitChars = { ':', '.', '-', '_', ' ', '~', '+' };
 
         public uint InternalSuperversion { get; set; }
         public string PublicVersion { get; set; }
 
         public static implicit operator PackageVersion(string version)
         {
-            string[] s = version.Split(':');
+            var s = version.Split(':');
             if (s.Count() == 1)
                 return new PackageVersion()
                 {
@@ -45,24 +43,34 @@ namespace Craftitude
 
         public override bool Equals(object obj)
         {
-            if (obj is PackageVersion)
-                return CompareTo(obj as PackageVersion) == 0;
-            else if (obj is string)
-                return CompareTo(obj as string) == 0;
-            else
-                return false;
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == this.GetType() && Equals((PackageVersion) obj);
+        }
+
+        protected bool Equals(PackageVersion other)
+        {
+            return InternalSuperversion == other.InternalSuperversion && string.Equals(PublicVersion, other.PublicVersion);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((int)InternalSuperversion * 397) ^ (PublicVersion != null ? PublicVersion.GetHashCode() : 0);
+            }
         }
 
         public int CompareTo(PackageVersion other)
         {
-            string ver1 = this.ToString(true);
-            string ver2 = other.ToString(true);
+            var ver1 = ToString(true);
+            var ver2 = other.ToString(true);
 
-            List<string> split1 = this.ToString().Split(splitChars).ToList();
-            List<string> split2 = other.ToString().Split(splitChars).ToList();
+            var split1 = ToString().Split(SplitChars).ToList();
+            var split2 = other.ToString().Split(SplitChars).ToList();
 
-            int maxCount = Math.Max(split1.Count, split2.Count);
-            int maxLength = 32; // TODO: Restrict part length in documentation
+            var maxCount = Math.Max(split1.Count, split2.Count);
+            const int maxLength = 32; // TODO: Restrict part length in documentation
 
             // Fill up part counts
             while (split1.Count < maxCount)
@@ -76,19 +84,13 @@ namespace Craftitude
             split2 = split2.Select(i => string.Format("{0}{1}", new string('\0', maxLength - i.Length), i)).ToList();
 
             // Comparison
-            foreach (var comparisonItem in
-                split1.Zip(split2, (s, i) => new { s, i })
-                .Select(item => new[] { item.s, item.i })
-                .Select(i => i[0].CompareTo(i[1])))
-            {
-                if (comparisonItem != 0)
-                {
-                    return comparisonItem;
-                }
-            }
+            return split1
+                .Zip(split2, (s, i) => new {s, i})
+                .Select(item => new[] {item.s, item.i})
+                .Select(i => string.Compare(i[0], i[1], StringComparison.Ordinal))
+                .FirstOrDefault(comparisonItem => comparisonItem != 0);
 
             // All elements are equal
-            return 0;
         }
     }
 }

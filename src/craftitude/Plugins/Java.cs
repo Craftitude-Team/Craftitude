@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace Craftitude.Plugins
@@ -11,8 +9,7 @@ namespace Craftitude.Plugins
         public static void Install(Profile profile, string groupId, string artifactId, string version, string jarFile)
         {
             var javaDirectory = profile.Directory.CreateSubdirectory("java");
-            foreach (string groupPart in groupId.Split('.'))
-                javaDirectory = javaDirectory.CreateSubdirectory(groupPart);
+            javaDirectory = groupId.Split('.').Aggregate(javaDirectory, (current, groupPart) => current.CreateSubdirectory(groupPart));
             javaDirectory = javaDirectory.CreateSubdirectory(artifactId);
             javaDirectory = javaDirectory.CreateSubdirectory(version);
 
@@ -24,8 +21,7 @@ namespace Craftitude.Plugins
         public static void Uninstall(Profile profile, string groupId, string artifactId, string version)
         {
             var javaDirectory = profile.Directory.CreateSubdirectory("java");
-            foreach (string groupPart in groupId.Split('.'))
-                javaDirectory = javaDirectory.CreateSubdirectory(groupPart);
+            javaDirectory = groupId.Split('.').Aggregate(javaDirectory, (current, groupPart) => current.CreateSubdirectory(groupPart));
             javaDirectory = javaDirectory.CreateSubdirectory(artifactId);
             javaDirectory = javaDirectory.CreateSubdirectory(version);
 
@@ -35,7 +31,7 @@ namespace Craftitude.Plugins
             File.Delete(targetJarPath);
 
             // Delete all now empty directories.
-            while (!javaDirectory.EnumerateFiles().Any())
+            while (javaDirectory != null && !javaDirectory.EnumerateFiles().Any())
             {
                 javaDirectory.Delete();
                 javaDirectory = javaDirectory.Parent;

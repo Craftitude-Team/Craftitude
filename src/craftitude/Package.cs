@@ -1,24 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.IO;
-using SharpCompress;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
-using YamlDotNet;
-using YamlDotNet.RepresentationModel;
 using YamlDotNet.RepresentationModel.Serialization;
-using YamlDotNet.Core;
-using YamlDotNet.RepresentationModel.Serialization.NamingConventions;
-using YamlDotNet.RepresentationModel.Serialization.NodeDeserializers;
-using YamlDotNet.RepresentationModel.Serialization.NodeTypeResolvers;
 
 namespace Craftitude
 {
