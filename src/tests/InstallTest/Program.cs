@@ -14,7 +14,7 @@ namespace InstallTest
 
         static Package GetPackage(string name)
         {
-            Console.WriteLine("Fetching package {0}...", name);
+            Debug.WriteLine(string.Format("Fetching package {0}...", name));
             return new Package(Repository.EnumerateDirectories(name).Single());
         }
 
@@ -27,23 +27,28 @@ namespace InstallTest
             bool hasPredependencies;
             do
             {
-                Console.WriteLine("Starting new list.");
+                Debug.WriteLine("Starting new list.");
 
                 var pendingPackages = new List<Package>();
-                var currentlist = packages.Last();
+                var currentlist = packages.Last().ToList();
 
                 foreach (var package in currentlist)
                 {
-                    Console.WriteLine("Checking out package {0}", package.Metadata.Id);
+                    Debug.WriteLine(string.Format("Checking out package {0}", package.Metadata.Id));
                     foreach (var dependency in package.Metadata.Dependencies.Where(dependency => dependency.Type == DependencyType.Prerequirement || dependency.Type == DependencyType.Requirement || dependency.Type == DependencyType.Suggestion).Where(dependency => !Profile.IsInstalledPackagesMatch(dependency)))
                     {
                         // TODO: abort on planned-to-install and actually wanted version mismatch
                         if (packages.Sum(ps => ps.Count(pr => pr.Metadata.Id == dependency.Name)) > 0)
                         {
-                            Console.WriteLine("{0}: {1} is already planned to be installed. Ignoring.", package.Metadata.Id, dependency.Name);
+                            Console.WriteLine("{0}: Installing {1} earlier", package.Metadata.Id, dependency.Name);
+                            foreach (var pendingPackagesList in packages)
+                            {
+                                pendingPackagesList.RemoveAll(p => p.Metadata.Id == dependency.Name);
+                            }
+                            pendingPackages.Add(GetPackage(dependency.Name));
                             continue;
                         }
-                        Console.WriteLine("{0}: {2} not installed but is a {1}, will be installed beforehand.", package.Metadata.Id, dependency.Type.ToString().ToLower(), dependency.Name); 
+                        Console.WriteLine("{0}: {1} {2} will be installed beforehand.", package.Metadata.Id, dependency.Type.ToString(), dependency.Name); 
                         pendingPackages.Add(GetPackage(dependency.Name));
                     }
                 }
@@ -63,11 +68,32 @@ namespace InstallTest
             //if (Directory.Exists("test"))
             //    Directory.Delete("test", true);
 
-            Console.WriteLine("Creating test target...");
             Directory.CreateDirectory("test");
 
-            Console.WriteLine("Preparing installation...");
-            var packages = GetPackagesToInstall("minecraftforge");
+            var packages = GetPackagesToInstall("minecraftforge").ToList();
+
+            // Print out generated installation levels
+            Console.WriteLine();
+            Console.WriteLine("== Generated installation levels ==");
+            var level = 0;
+            foreach (var levelPackages in packages)
+            {
+                Console.WriteLine("- Level {0}", ++level);
+                foreach (var package in levelPackages)
+                {
+                    Console.WriteLine("\t- {0} {1}", package.Metadata.Id, package.Metadata.Version);
+                }
+            }
+            Console.WriteLine("== End of generated installation levels ==");
+            Console.WriteLine();
+
+            // Let's print it out somewhat simplish and chaotic
+            Console.WriteLine("Following packages will be installed: {0}", string.Join(", ", packages.Select(p => string.Join(", ", p.Select(p2 => p2.Metadata.Id)))));
+            Console.WriteLine();
+
+            Console.WriteLine("Press a key to continue...");
+            Console.ReadKey();
+            Console.WriteLine();
 
             try
             {
