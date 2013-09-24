@@ -6,9 +6,9 @@ namespace Craftitude.Plugins
     {
         public static string ComposeUrl(string groupId, string artifactId, string versionId, bool natives = false, string repository = "http://repo1.maven.org/maven2/")
         {
-            string realpath = groupId.Replace('.', '/') + "/" + artifactId + "/" + versionId + "/" + artifactId + "-" + versionId + (natives ? "-natives-" + (Environment.OSVersion.Platform == PlatformID.Unix ? "linux" : Environment.OSVersion.Platform == PlatformID.MacOSX ? "osx" : "windows") : "") + ".jar";
+            var realpath = groupId.Replace('.', '/') + "/" + artifactId + "/" + versionId + "/" + artifactId + "-" + versionId + (natives ? "-natives-" + (Environment.OSVersion.Platform == PlatformID.Unix ? "linux" : Environment.OSVersion.Platform == PlatformID.MacOSX ? "osx" : "windows") : "") + ".jar";
 
-            UriBuilder b = new UriBuilder(repository);
+            var b = new UriBuilder(repository);
             b.Path = b.Path.TrimEnd('/') + "/" + realpath;
 
             return b.Uri.ToString();
