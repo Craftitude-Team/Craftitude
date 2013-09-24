@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.IO;
@@ -30,12 +31,22 @@ namespace Craftitude.Plugins
             {
                 var localFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 
-                // TODO: Implement proxy support. Disabled for now to speed up S3 downloads.
-                wc.Proxy = null;
                 wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                Debug.WriteLine("Downloading {0} to {1}...", remoteFile, localFile);
-                wc.DownloadFile(remoteFile, localFile);
-                return localFile;
+                Debug.WriteLine(string.Format("Downloading: {0}", remoteFile));
+                try
+                {
+                    wc.DownloadFile(remoteFile, localFile);
+                    Debug.WriteLine(string.Format("Download finished: {0}", remoteFile));
+                    return localFile;
+                }
+                catch (Exception err)
+                {
+                    if (File.Exists(localFile))
+                        File.Delete(localFile);
+                    Debug.WriteLine(string.Format("Download FAILED: {0}", remoteFile));
+                    Debug.WriteLine(err.ToString());
+                    throw;
+                }
             }
         }
     }
