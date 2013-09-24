@@ -22,7 +22,9 @@ Platforms:
 - macosx-x86
 - macosx-x64
 Version: 1.3
-Dependencies: []
+Dependencies:
+- Type: Requirement
+  Name: minecraft-client
 Targets:
   install:
   - Name: plugin:luasetup

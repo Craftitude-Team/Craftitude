@@ -3,20 +3,22 @@ import("Craftitude.Plugins")
 local profile = GetProfile()
 local package = GetPackage()
 local metadata = package.Metadata
+local version = metadata.Version:ToString(false)
 local m2repo = "https://s3.amazonaws.com/Minecraft.Download/libraries/"
 
 function install()
-	Maven2.Install(profile, "net.minecraft", "launchwrapper", metadata.Version, m2repo)
-	Java.Autoload(profile, "net.minecraft", "launchwrapper", metadata.Version)
+	Maven2.Install(profile, "net.minecraft", "launchwrapper", version, m2repo)
+	Java.Autoload(profile, "net.minecraft", "launchwrapper", version)
 end
 
 function configure()
-	profile.ProfileInfo.MainClass = "net.minecraft.launchwrapper.Launch"
+	profile.ProfileInfo:ChangeMainClass("net.minecraft.launchwrapper.Launch")
 end
 
 function uninstall()
-	Java.UnAutoload(profile, "net.minecraft", "launchwrapper", metadata.Version)
-	Java.Uninstall(profile, "net.minecraft", "launchwrapper", metadata.Version)
+	profile.ProfileInfo:RestoreMainClass("net.minecraft.launchwrapper.Launch")
+	Java.UnAutoload(profile, "net.minecraft", "launchwrapper", version)
+	Java.Uninstall(profile, "net.minecraft", "launchwrapper", version)
 end
 
 function purge()

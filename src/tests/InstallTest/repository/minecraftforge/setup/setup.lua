@@ -29,11 +29,13 @@ function configure()
 		profile,
 		"net.minecraftforge", "minecraftforge", forgeVersion
 	)
+	profile.ProfileInfo:AddTweakClass("cpw.mods.fml.common.launcher.FMLTweaker")
 	Directory.CreateDirectory(Path.Combine(profileDir, "mods"))
 end
 
 -- Uninstallation routine.
 function uninstall()
+	profile.ProfileInfo:RemoveTweakClass("cpw.mods.fml.common.launcher.FMLTweaker")
 	Java.UnAutoload(
 		profile,
 		"net.minecraftforge", "minecraftforge", forgeVersion

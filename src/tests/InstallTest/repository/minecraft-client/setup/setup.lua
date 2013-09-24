@@ -8,8 +8,11 @@ local package = GetPackage()
 local packageDir = GetPackagePath()
 local metadata = package.Metadata
 
+local versionNumber = metadata.Version:ToString(false)
+local versionType = "release"
+
 function install()
-	local minecraftJar = Http.Download("https://s3.amazonaws.com/Minecraft.Download/versions/" .. metadata.Version:ToString(false) .."/" .. metadata.Version:ToString(false) .. ".jar")
+	local minecraftJar = Http.Download("https://s3.amazonaws.com/Minecraft.Download/versions/" .. versionNumber .."/" .. versionNumber .. ".jar")
 	Java.Install(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false), minecraftJar)
 	Java.Autoload(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false))
 	if profile.ProfileInfo.MainClass == nil or profile.ProfileInfo.MainClass == "" then
@@ -18,10 +21,14 @@ function install()
 end
 
 function configure()
+	profile.ProfileInfo.MinecraftVersion = versionNumber
+	profile.ProfileInfo.MinecraftVersionType = versionType
+	profile.ProfileInfo:ChangeMainClass("net.minecraft.client.Minecraft")
 	Directory.CreateDirectory(Path.Combine(profileDir, "resourcepacks"))
 end
 
 function uninstall()
+	profile.ProfileInfo:RestoreMainClass("net.minecraft.client.Minecraft")
 	Java.UnAutoload(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false))
 	Java.Uninstall(profile, "net.minecraft.client", "minecraft", metadata.Version:ToString(false))
 end

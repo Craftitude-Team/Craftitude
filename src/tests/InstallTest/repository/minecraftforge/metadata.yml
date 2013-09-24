@@ -28,6 +28,8 @@ Dependencies:
 - Type: Requirement
   Name: minecraft-client
   Versions: '=1.6.2'
+- Type: Requirement
+  Name: minecraft-launchwrapper
 Targets:
   install:
   - Name: plugin:luasetup
