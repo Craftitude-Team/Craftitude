@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.IO;
+using Craftitude.Profile;
 using Newtonsoft.Json;
 using YamlDotNet.RepresentationModel.Serialization;
 
@@ -52,16 +53,16 @@ namespace Craftitude
 
         public PackageMetadata Metadata { get; private set; }
 
-        public void RunTarget(Profile profile, string target)
+        public void RunTarget(CraftitudeProfile profile, string target)
         {
             RunSteps(profile, Metadata.Targets[target]);
         }
 
-        protected void RunSteps(Profile profile, IEnumerable<SetupStep> steps)
+        protected void RunSteps(CraftitudeProfile profile, IEnumerable<SetupStep> steps)
         {
             foreach (var step in steps)
             {
-                string[] stepName = step.Name.Split(':');
+                var stepName = step.Name.Split(':');
                 switch (stepName[0].ToLower())
                 {
                     case "target":
@@ -85,8 +86,8 @@ namespace Craftitude
                         var container = new CompositionContainer(pluginCatalog, true);
                         var setuphelper = container.GetExportedValue<SetupHelper>(stepName[1]);
 
-                        setuphelper._package = this;
-                        setuphelper._profile = profile;
+                        setuphelper.Package = this;
+                        setuphelper.Profile = profile;
                         setuphelper.Run(step.Arguments.ToArray());
                         break;
                 }

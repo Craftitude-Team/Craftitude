@@ -72,7 +72,7 @@ namespace Craftitude
             return from package in packages.Where(p => p.Id.Equals(searchId)) where predicates.Aggregate(true, (current, dg) => current && dg(package.Version, searchVersion)) select package.Item;
         }
 
-        public static IEnumerable<T> GetMatches<T>(
+        public static List<T> GetMatches<T>(
             IEnumerable<T> input,
             Func<T, string> inputIdFunc, Func<T, string> inputVersionFunc,
             Dependency dependency
@@ -84,103 +84,5 @@ namespace Craftitude
                 l.AddRange(GetMatches(input, inputIdFunc, inputVersionFunc, dependency.Name, version));
             return l;
         }
-
-        /*
-        public static IEnumerable<RemotePackage> MatchPackages(IEnumerable<RemotePackage> packages, Dependency dependency)
-        {
-            // Avoid multiple enumerations
-            packages = packages.ToList();
-
-            Debug.WriteLine("** MatchPackages(<{0} items>, {1})", packages.Count(), dependency.Name + " " + dependency.Versions);
-
-            // Filter out by ID
-            packages = packages.Where(p => dependency.Name.Split('|').Contains(p.Metadata.Id)).AsEnumerable();
-
-            Debug.WriteLine("\tFiltered out by ID:");
-            foreach (var package in packages)
-            {
-                Debug.WriteLine("\t\t- package {0} {1}", package.Metadata.Id, package.Metadata.Version);
-            }
-
-            // Filter out by version
-            var selectedPackages = new List<RemotePackage>();
-            var tokens = new[] { '<', '=', '>', '#' };
-            if (string.IsNullOrEmpty(dependency.Versions))
-                dependency.Versions = "#^.*$";
-            if (!dependency.Versions.Trim().Any()) return selectedPackages;
-            foreach (string version in dependency.Versions.Split(' '))
-            {
-                var versionToken = new List<char>();
-
-                var q = new Queue<char>(version.ToCharArray());
-                while (tokens.Contains(q.Peek()))
-                {
-                    versionToken.Add(q.Dequeue());
-                }
-
-                var versionString = new string(q.ToArray());
-
-                foreach (var token in versionToken)
-                {
-                    switch (token)
-                    {
-                        case '=':
-                        {
-                            var packagesFound =
-                                packages.Where(
-                                    p => p.Metadata.Version.CompareTo(versionString) == 0
-                                    ).ToList();
-                            Debug.WriteLine("\tComparison token {0}, version {2}: Found {1} packages", token,
-                                packagesFound.Count(), versionString);
-                            selectedPackages.AddRange(packagesFound);
-                        }
-                            break;
-                        case '<':
-                        {
-                            var packagesFound =
-                                packages.Where(
-                                    p => p.Metadata.Version.CompareTo(versionString) == -1
-                                    ).ToList();
-                            Debug.WriteLine("\tComparison token {0}, version {2}: Found {1} packages", token,
-                                packagesFound.Count(), versionString);
-                            selectedPackages.AddRange(packagesFound);
-                        }
-                            break;
-                        case '>':
-                        {
-                            var packagesFound =
-                                packages.Where(
-                                    p => p.Metadata.Version.CompareTo(versionString) == 1
-                                    ).ToList();
-                            Debug.WriteLine("\tComparison token {0}, version {2}: Found {1} packages", token,
-                                packagesFound.Count(), versionString);
-                            selectedPackages.AddRange(packagesFound);
-                        }
-                            break;
-                        case '#':
-                        {
-                            if (versionToken.Count > 1)
-                            {
-                                Debug.WriteLine("Can't combine regex with other comparison types.");
-                                throw new InvalidOperationException(
-                                    "Can't combine regex with other comparison types.");
-                            }
-
-                            var packagesFound =
-                                packages.Where(
-                                    p => Regex.IsMatch(p.Metadata.Version, versionString)
-                                    ).ToList();
-                            Debug.WriteLine("\tComparison token {0}: Found {1} packages", token,
-                                packagesFound.Count());
-                            selectedPackages.AddRange(packagesFound);
-                        }
-                            break;
-                    }
-                }
-            }
-
-            return selectedPackages;
-        }
-        */
     }
 }

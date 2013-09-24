@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
+using Craftitude.Profile;
 
 namespace Craftitude.Plugins.Forge
 {
@@ -37,17 +38,17 @@ namespace Craftitude.Plugins.Forge
             return sanitisedNamePart;
         }
 
-        public static void InstallMod(Profile profile, PackageMetadata metadata, string jarFile)
+        public static void InstallMod(CraftitudeProfile profile, PackageMetadata metadata, string jarFile)
         {
             File.Copy(jarFile, GenerateModPath(profile, metadata), true);
         }
 
-        public static void UninstallMod(Profile profile, PackageMetadata metadata)
+        public static void UninstallMod(CraftitudeProfile profile, PackageMetadata metadata)
         {
             File.Delete(GenerateModPath(profile, metadata));
         }
 
-        public static string GenerateModPath(Profile profile, PackageMetadata metadata)
+        public static string GenerateModPath(CraftitudeProfile profile, PackageMetadata metadata)
         {
             return Path.Combine(profile.Directory.CreateSubdirectory("mods").FullName + Path.DirectorySeparatorChar, CoerceValidFileName((metadata.Id + "-" + metadata.Version + ".jar").Replace(" ", "")));
 

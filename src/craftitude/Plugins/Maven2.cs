@@ -1,4 +1,5 @@
 ﻿using System;
+using Craftitude.Profile;
 
 namespace Craftitude.Plugins
 {
@@ -14,12 +15,12 @@ namespace Craftitude.Plugins
             return b.Uri.ToString();
         }
 
-        public static void Install(Profile profile, string groupId, string artifactId, string versionId, string repository = "http://repo1.maven.org/maven2/")
+        public static void Install(CraftitudeProfile profile, string groupId, string artifactId, string versionId, string repository = "http://repo1.maven.org/maven2/")
         {
             Java.Install(profile, groupId, artifactId, versionId, Http.Download(ComposeUrl(groupId, artifactId, versionId, false, repository)));
         }
 
-        public static void Uninstall(Profile profile, string groupId, string artifactId, string versionId)
+        public static void Uninstall(CraftitudeProfile profile, string groupId, string artifactId, string versionId)
         {
             Java.Uninstall(profile, groupId, artifactId, versionId);
         }

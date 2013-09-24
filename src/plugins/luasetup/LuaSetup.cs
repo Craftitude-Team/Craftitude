@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.IO;
 using System.Text;
+using Craftitude.Profile;
 using NLua;
 using NLua.Config;
 using NLua.Event;
@@ -78,17 +79,17 @@ end");
             }
         }
 
-        public bool Is64bitOS()
+        public bool Is64BitOS()
         {
             return Environment.Is64BitOperatingSystem;
         }
 
-        public bool Is64bitProc()
+        public bool Is64BitProc()
         {
             return Environment.Is64BitOperatingSystem;
         }
 
-        public Profile GetProfile()
+        public CraftitudeProfile GetProfile()
         {
             return Profile;
         }

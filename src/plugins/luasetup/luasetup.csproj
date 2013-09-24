@@ -7,7 +7,7 @@
     <ProjectGuid>{106F8BF0-B129-4EAC-8A83-B349DCB3EC01}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Craftitude.Plugins.Setup.Lua</RootNamespace>
+    <RootNamespace>Craftitude.Plugins.LuaSetup</RootNamespace>
     <AssemblyName>plugin_luasetup</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

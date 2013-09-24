@@ -1,13 +1,12 @@
-﻿namespace Craftitude
+﻿using Craftitude.Profile;
+
+namespace Craftitude
 {
     public class SetupHelper
     {
         public virtual void Run(string[] arguments) { }
 
-        internal Profile _profile;
-        internal Package _package;
-
-        public Profile Profile { get { return _profile; } }
-        public Package Package { get { return _package; } }
+        public CraftitudeProfile Profile { get; internal set; }
+        public Package Package { get; internal set; }
     }
 }

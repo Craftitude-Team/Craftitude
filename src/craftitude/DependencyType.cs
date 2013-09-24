@@ -1,5 +1,8 @@
-﻿namespace Craftitude
+﻿using System;
+
+namespace Craftitude
 {
+    [Flags]
     public enum DependencyType : byte
     {
         Suggestion = 1,

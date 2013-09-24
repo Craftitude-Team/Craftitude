@@ -4,13 +4,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.IO;
 using Craftitude;
+using Craftitude.Profile;
 
 namespace InstallTest
 {
     class Program
     {
         static readonly DirectoryInfo Repository = new DirectoryInfo("repository");
-        static readonly Profile Profile = new Profile(new DirectoryInfo("test"));
+        static readonly CraftitudeProfile Profile = new CraftitudeProfile(new DirectoryInfo("test"));
 
         static Package GetPackage(string name)
         {
@@ -35,7 +36,7 @@ namespace InstallTest
                 foreach (var package in currentlist)
                 {
                     Debug.WriteLine(string.Format("Checking out package {0}", package.Metadata.Id));
-                    foreach (var dependency in package.Metadata.Dependencies.Where(dependency => dependency.Type == DependencyType.Prerequirement || dependency.Type == DependencyType.Requirement || dependency.Type == DependencyType.Suggestion).Where(dependency => !Profile.IsInstalledPackagesMatch(dependency)))
+                    foreach (var dependency in package.Metadata.Dependencies.Where(dependency => dependency.Type == DependencyType.Prerequirement || dependency.Type == DependencyType.Requirement || dependency.Type == DependencyType.Suggestion).Where(dependency => !Profile.HasMatchingInstalledPackages(dependency)))
                     {
                         // TODO: abort on planned-to-install and actually wanted version mismatch
                         if (packages.Sum(ps => ps.Count(pr => pr.Metadata.Id == dependency.Name)) > 0)
@@ -105,16 +106,16 @@ namespace InstallTest
                     // Install
                     foreach (var package in packageBatch)
                     {
-                        Profile.AppendPackage(package, PackageAction.Install);
+                        Profile.QueuePackage(package, PackageAction.Install);
                     }
 
                     // Configure
                     foreach (var package in packageBatch.Where(package => package.Metadata.Targets.ContainsKey("configure")))
                     {
-                        Profile.AppendPackage(package, PackageAction.Configure);
+                        Profile.QueuePackage(package, PackageAction.Configure);
                     }
 
-                    Profile.RunTasks();
+                    Profile.RunPackageQueue();
                 }
 
                 Profile.Save();

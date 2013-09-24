@@ -1,11 +1,12 @@
 ﻿using System.Linq;
 using System.IO;
+using Craftitude.Profile;
 
 namespace Craftitude.Plugins
 {
     public class Java
     {
-        public static void Install(Profile profile, string groupId, string artifactId, string version, string jarFile, bool copy = false)
+        public static void Install(CraftitudeProfile profile, string groupId, string artifactId, string version, string jarFile, bool copy = false)
         {
             var javaDirectory = profile.Directory.CreateSubdirectory("java");
             javaDirectory = groupId.Split('.').Aggregate(javaDirectory, (current, groupPart) => current.CreateSubdirectory(groupPart));
@@ -24,7 +25,7 @@ namespace Craftitude.Plugins
             }
         }
 
-        public static void Uninstall(Profile profile, string groupId, string artifactId, string version)
+        public static void Uninstall(CraftitudeProfile profile, string groupId, string artifactId, string version)
         {
             var javaDirectory = profile.Directory.CreateSubdirectory("java");
             javaDirectory = groupId.Split('.').Aggregate(javaDirectory, (current, groupPart) => current.CreateSubdirectory(groupPart));
@@ -44,12 +45,12 @@ namespace Craftitude.Plugins
             }
         }
 
-        public static void Autoload(Profile profile, string groupId, string artifactId, string version, double weight = 50)
+        public static void Autoload(CraftitudeProfile profile, string groupId, string artifactId, string version, double weight = 50)
         {
             profile.ProfileInfo.Libraries.Add(new PathLibraryEntry(groupId, artifactId, version, weight));
         }
 
-        public static void UnAutoload(Profile profile, string groupId, string artifactId, string version)
+        public static void UnAutoload(CraftitudeProfile profile, string groupId, string artifactId, string version)
         {
             profile.ProfileInfo.Libraries.RemoveAll(e => e.GroupId == groupId && e.ArtifactId == artifactId && e.VersionId == version);
         }

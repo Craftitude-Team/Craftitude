@@ -6,8 +6,7 @@ namespace Craftitude
 {
     public class PackedPackage
     {
-        RemotePackage _package;
-        public RemotePackage Package { get { return _package; } }
+        public Package Package { get; private set; }
 
         public PackedPackage(FileInfo fileInfo)
         {
@@ -23,8 +22,7 @@ namespace Craftitude
             }
 
             // Create package instance of the freshly unpacked stuff
-            Package package = new Package(tempDir);
-            _package = RemotePackage.FromLocalPackage(package);
+            Package = new Package(tempDir);
         }
 
         public PackedPackage(string filePath)
@@ -36,7 +34,7 @@ namespace Craftitude
         {
             // Clean up directory.
             // TODO: Make this safe so it ultimately gets called when the package isn't needed anymore.
-            _package.Package.Directory.Delete(true);
+            Package.Directory.Delete(true);
         }
     }
 }
