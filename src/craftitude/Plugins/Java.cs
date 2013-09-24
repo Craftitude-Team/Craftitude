@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using System.IO;
 
 namespace Craftitude.Plugins
 {
     public class Java
     {
-        public static void Install(Profile profile, string groupId, string artifactId, string version, string jarFile)
+        public static void Install(Profile profile, string groupId, string artifactId, string version, string jarFile, bool copy = false)
         {
             var javaDirectory = profile.Directory.CreateSubdirectory("java");
             javaDirectory = groupId.Split('.').Aggregate(javaDirectory, (current, groupPart) => current.CreateSubdirectory(groupPart));
@@ -15,7 +14,14 @@ namespace Craftitude.Plugins
 
             var targetJarPath = javaDirectory.GetFile(string.Format("{0}-{1}.jar", artifactId, version)).FullName;
 
-            File.Copy(jarFile, targetJarPath, true);
+            if (copy)
+                File.Copy(jarFile, targetJarPath, true);
+            else
+            {
+                if(File.Exists(targetJarPath))
+                    File.Delete(targetJarPath);
+                File.Move(jarFile, targetJarPath);
+            }
         }
 
         public static void Uninstall(Profile profile, string groupId, string artifactId, string version)
