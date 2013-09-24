@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Craftitude.Extensions.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 
@@ -28,35 +29,28 @@ namespace Craftitude.Plugins
                 }
             }
 
-            XDocument doc = null;
+            XDocument doc;
             XNamespace xmlns = "http://s3.amazonaws.com/doc/2006-03-01/";
             Console.Write("Loading S3 bucket... ");
             while (true)
             {
-                try
-                {
-                    var xdoc = new XmlDocument();
-                    xdoc.Load(url);
-                    var xnr = new XmlNodeReader(xdoc);
-                    xnr.MoveToContent();
-                    doc = XDocument.Load(xnr);
-                    Console.WriteLine("found {0} items", doc.Descendants(xmlns + "Contents").Count());
-                    if (!doc.Descendants(xmlns + "Contents").Any())
-                    {
-                        continue;
-                    }
-                    break;
-                }
-                catch
+                var xdoc = new XmlDocument();
+                xdoc.Load(url);
+                var xnr = new XmlNodeReader(xdoc);
+                xnr.MoveToContent();
+                doc = XDocument.Load(xnr);
+                Console.WriteLine("found {0} items", doc.Descendants(xmlns + "Contents").Count());
+                if (!doc.Descendants(xmlns + "Contents").Any())
                 {
                     continue;
                 }
+                break;
             }
 
             var actionsCompleted = 0;
             var actions = new List<Tuple<string, string>>();
 
-            Action<Tuple<string, string>> downloadingAction = (t) =>
+            Action<Tuple<string, string>> downloadingAction = t =>
                     {
                         var etag = t.Item1;
                         var path = t.Item2;
@@ -64,7 +58,7 @@ namespace Craftitude.Plugins
                         var rpath = path.Replace('/', Path.DirectorySeparatorChar);
 
                         var fi = new FileInfo(Path.Combine(di.FullName + Path.DirectorySeparatorChar, rpath));
-                        if (!fi.Directory.Exists)
+                        if (fi.Directory != null && !fi.Directory.Exists)
                             fi.Directory.Create();
                         else if (fi.Exists)
                             fi.Delete();
@@ -77,14 +71,12 @@ namespace Craftitude.Plugins
                             try
                             {
                                 File.Move(Http.Download(b.Uri.ToString()), fi.FullName);
-                                //Console.WriteLine("Finished download: {0}", path);
-                                break;
                             }
                             catch
                             {
-                                //Console.WriteLine("Redownloading (Exception): {0}", path);
                                 continue;
                             }
+                            break;
                         }
 
                         lock (etags)
@@ -97,18 +89,24 @@ namespace Craftitude.Plugins
 
             foreach (var content in doc.Descendants(xmlns + "Contents"))
             {
+                var xkey = content.Element(xmlns + "Key");
+                var xetag = content.Element(xmlns + "ETag");
+
+                if (xkey == null || xetag == null)
+                    continue;
+
                 // Key as relative path
-                string relpath = content.Element(xmlns + "Key").Value;
+                var relpath = xkey.Value;
 
                 // Compare etags
-                string etag = content.Element(xmlns + "ETag").Value.Trim('"');
+                var etag = xetag.Value.Trim('"');
                 if (!etags.ContainsKey(relpath))
                     etags.Add(relpath, null);
                 if (etags[relpath] == etag)
                     continue; // File or directory not changed
 
                 // Local path
-                string rellpath = relpath.Replace('/', Path.DirectorySeparatorChar);
+                var rellpath = relpath.Replace('/', Path.DirectorySeparatorChar);
 
                 // Check if directory
                 if (relpath.EndsWith("/")) // is a directory

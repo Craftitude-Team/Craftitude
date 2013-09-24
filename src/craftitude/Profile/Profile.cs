@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Craftitude.Extensions.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 
@@ -211,7 +212,7 @@ namespace Craftitude.Profile
                         // copy package setup over to <profile>/craftitude/packages/<id> for uninstallation/update/purge
                         package.Directory.Copy(
                             _craftitudeDirectory.CreateSubdirectory("packages").CreateSubdirectory(package.Metadata.Id));
-                        ProfileInfo.InstalledPackages.Add(new InstalledPackageInfo()
+                        ProfileInfo.InstalledPackages.Add(new InstalledPackageInfo
                         {
                             Id = package.Metadata.Id,
                             Version = package.Metadata.Version,

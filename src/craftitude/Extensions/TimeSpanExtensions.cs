@@ -1,8 +1,9 @@
-namespace System
-{
-    using Linq;
+using System;
+using System.Linq;
 
-	internal static class TimeSpanExtensions
+namespace Craftitude.Extensions
+{
+    internal static class TimeSpanExtensions
 	{
 		private static string GetSeconds(TimeSpan timeSpan)
 		{
@@ -34,21 +35,21 @@ namespace System
 		}
 		public static string ToPrettyFormat(this TimeSpan timeSpan)
 		{
-			string[] array = (
-				from s in new string[]
+			var array = (
+				from s in new[]
 				{
-					TimeSpanExtensions.GetDays(timeSpan),
-					TimeSpanExtensions.GetHours(timeSpan),
-					TimeSpanExtensions.GetMinutes(timeSpan),
-					TimeSpanExtensions.GetSeconds(timeSpan)
+					GetDays(timeSpan),
+					GetHours(timeSpan),
+					GetMinutes(timeSpan),
+					GetSeconds(timeSpan)
 				}
 				where !string.IsNullOrEmpty(s)
 				select s).ToArray<string>();
-			int num = array.Length;
+			var num = array.Length;
 			string text;
 			if (num < 2)
 			{
-				text = (array.FirstOrDefault<string>() ?? string.Empty);
+				text = (array.FirstOrDefault() ?? string.Empty);
 			}
 			else
 			{

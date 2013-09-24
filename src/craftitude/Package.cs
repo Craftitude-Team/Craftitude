@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.IO;
+using Craftitude.Extensions.IO;
 using Craftitude.Profile;
 using Newtonsoft.Json;
 using YamlDotNet.RepresentationModel.Serialization;
@@ -13,18 +14,18 @@ namespace Craftitude
 {
     public class Package
     {
-        DirectoryInfo _directoryInfo;
+        readonly DirectoryInfo _directoryInfo;
 
         public Package(DirectoryInfo packageDirectory)
         {
             _directoryInfo = packageDirectory;
 
-            FileInfo jsonFile = _directoryInfo.GetFile("metadata.json");
-            FileInfo yamlFile = _directoryInfo.GetFile("metadata.yml");
+            var jsonFile = _directoryInfo.GetFile("metadata.json");
+            var yamlFile = _directoryInfo.GetFile("metadata.yml");
             
             if (jsonFile.Exists)
             {
-                Serializer se = new Serializer();
+                var se = new Serializer();
                 Metadata = JsonConvert.DeserializeObject<PackageMetadata>(File.ReadAllText(_directoryInfo.GetFile("metadata.json").FullName));
                 using (var yamlStream = yamlFile.Open(FileMode.OpenOrCreate))
                 {
@@ -36,7 +37,7 @@ namespace Craftitude
                 jsonFile.Delete();
             }
 
-            Deserializer dse = new Deserializer();
+            var dse = new Deserializer();
             //Console.WriteLine("Reading YAML: {0}", yamlFile.FullName);
             using (var yamlStream = yamlFile.Open(FileMode.Open))
             {
@@ -94,6 +95,4 @@ namespace Craftitude
             }
         }
     }
-
-    //[Flags]
 }

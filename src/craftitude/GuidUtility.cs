@@ -58,7 +58,7 @@ namespace Craftitude
             }
 
             // most bytes from the hash are copied straight to the bytes of the new GUID (steps 5-7, 9, 11-12)
-            byte[] newGuid = new byte[16];
+            var newGuid = new byte[16];
             Array.Copy(hash, 0, newGuid, 0, 16);
 
             // set the four most significant bits (bits 12 through 15) of the time_hi_and_version field to the appropriate 4-bit version number from Section 4.1.3 (step 8)

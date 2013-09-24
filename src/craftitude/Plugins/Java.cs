@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.IO;
+using Craftitude.Extensions.IO;
 using Craftitude.Profile;
 
 namespace Craftitude.Plugins

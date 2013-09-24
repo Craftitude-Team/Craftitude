@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using Craftitude.Extensions.IO;
+
 namespace Craftitude.Plugins
 {
     public class FileUtils

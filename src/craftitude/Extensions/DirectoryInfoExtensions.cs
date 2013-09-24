@@ -1,6 +1,9 @@
-namespace System
+using System;
+using System.IO;
+using System.Linq;
+
+namespace Craftitude.Extensions
 {
-    using Linq;
     namespace IO
     {
         internal static class DirectoryInfoExtensions
@@ -22,10 +25,9 @@ namespace System
                 var f = directoryInfo.GetFiles(searchPattern, searchOption);
                 if (f.Any())
                     return f.First();
-                else if (!searchPattern.Contains('?') && !searchPattern.Contains('*'))
+                if (!searchPattern.Contains('?') && !searchPattern.Contains('*'))
                     return new FileInfo(Path.Combine(directoryInfo.FullName + Path.DirectorySeparatorChar, searchPattern));
-                else
-                    return null;
+                return null;
             }
             public static void Copy(this DirectoryInfo dir, DirectoryInfo destinationDir, bool overwrite = true, bool copySubDirs = true)
             {

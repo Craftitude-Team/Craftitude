@@ -1,5 +1,4 @@
-﻿using System;
-using Craftitude.Repositories;
+﻿using Craftitude.Repositories;
 
 namespace Craftitude.Profile
 {

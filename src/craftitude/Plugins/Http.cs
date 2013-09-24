@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.IO;
+using System.Net.Cache;
 
 namespace Craftitude.Plugins
 {
@@ -31,7 +32,7 @@ namespace Craftitude.Plugins
             {
                 var localFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 
-                wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+                wc.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
                 Debug.WriteLine(string.Format("Downloading: {0}", remoteFile));
                 try
                 {

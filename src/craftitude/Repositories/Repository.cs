@@ -10,13 +10,7 @@ namespace Craftitude.Repositories
 {
     public class Repository
     {
-        public class PackageInfo
-        {
-            public string Id { get; private set; }
-            public IEnumerable<string> Versions { get; private set; } 
-        }
-
-        private WebClient wc = new WebClient();
+        private readonly WebClient _wc = new WebClient();
 
         [JsonProperty("uri")]
         public Uri Uri { get; private set; }
@@ -24,10 +18,11 @@ namespace Craftitude.Repositories
         [JsonProperty("subscriptions")]
         public List<string> Subscriptions { get; private set; }
 
-        private List<PackageInfo> _packageInfos = new List<PackageInfo>();
- 
+        public List<PackageInfo> PackageInfos { get; private set; }
+
         public Repository(Uri uri, IEnumerable<string> subscriptions)
         {
+            PackageInfos = new List<PackageInfo>();
             Uri = uri;
             Subscriptions = subscriptions.ToList();
         }
@@ -37,11 +32,11 @@ namespace Craftitude.Repositories
             Console.Write("Fetching available packages for {0}...", Uri);
             try
             {
-                using (var yamlStream = wc.OpenRead(new Uri(Uri, "packages.yml")))
+                using (var yamlStream = _wc.OpenRead(new Uri(Uri, "packages.yml")))
                 {
                     if (yamlStream != null)
                         using (var yamlStreamReader = new StreamReader(yamlStream))
-                            _packageInfos = new Deserializer().Deserialize<List<PackageInfo>>(yamlStreamReader);
+                            PackageInfos = new Deserializer().Deserialize<List<PackageInfo>>(yamlStreamReader);
                     else
                         throw new Exception();
                 }

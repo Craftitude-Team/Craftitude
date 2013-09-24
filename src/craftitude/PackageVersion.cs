@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace Craftitude
@@ -14,21 +15,20 @@ namespace Craftitude
         {
             var s = version.Split(':');
             if (s.Count() == 1)
-                return new PackageVersion()
+                return new PackageVersion
                 {
                     PublicVersion = version
                 };
-            else
-                return new PackageVersion()
-                {
-                    InternalSuperversion = uint.Parse(s[0]),
-                    PublicVersion = string.Join(":", s.Skip(1))
-                };
+            return new PackageVersion
+            {
+                InternalSuperversion = uint.Parse(s[0]),
+                PublicVersion = string.Join(":", s.Skip(1))
+            };
         }
 
         public static implicit operator string(PackageVersion pv)
         {
-            return pv.InternalSuperversion.ToString() + ":" + pv.PublicVersion;
+            return pv.InternalSuperversion.ToString(CultureInfo.InvariantCulture) + ":" + pv.PublicVersion;
         }
 
         public override string ToString()
@@ -38,14 +38,14 @@ namespace Craftitude
 
         public string ToString(bool withBumpPrefix)
         {
-            return (withBumpPrefix && InternalSuperversion != 0 ? InternalSuperversion.ToString() + ":" : "") + PublicVersion;
+            return (withBumpPrefix && InternalSuperversion != 0 ? InternalSuperversion.ToString(CultureInfo.InvariantCulture) + ":" : "") + PublicVersion;
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == this.GetType() && Equals((PackageVersion) obj);
+            return obj.GetType() == GetType() && Equals((PackageVersion) obj);
         }
 
         protected bool Equals(PackageVersion other)
@@ -63,9 +63,6 @@ namespace Craftitude
 
         public int CompareTo(PackageVersion other)
         {
-            var ver1 = ToString(true);
-            var ver2 = other.ToString(true);
-
             var split1 = ToString().Split(SplitChars).ToList();
             var split2 = other.ToString().Split(SplitChars).ToList();
 
